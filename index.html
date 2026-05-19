@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>観葉植物図鑑・育て方検索｜初心者でも失敗しない植物選び</title>
+    <meta name="description" content="観葉植物30種以上の育て方・水やり頻度・日光・温度を無料で検索。難易度別フィルターで初心者向けから上級者向けまで対応。お気に入り保存機能付き。植物の種類から育て方を即確認。">
+    <meta name="keywords" content="観葉植物,図鑑,育て方,初心者,水やり,日光,種類,一覧,モンステラ,ポトス,サンスベリア">
+    <link rel="canonical" href="https://appadaycreator.github.io/plant-encyclopedia/">
+    <meta property="og:title" content="観葉植物図鑑・育て方検索｜初心者でも失敗しない植物選び">
+    <meta property="og:description" content="観葉植物30種以上の育て方・水やり・日光・温度を無料検索。難易度別フィルターで初心者向けから上級まで。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://appadaycreator.github.io/plant-encyclopedia/">
+    <meta property="og:image" content="https://appadaycreator.github.io/assets/ogp-default.png">
+    <meta property="og:site_name" content="観葉植物図鑑">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="観葉植物図鑑・育て方検索｜初心者向け植物を無料検索">
+    <meta name="twitter:description" content="観葉植物30種以上の育て方を無料検索。水やり・日光・難易度で絞り込み。">
+    <meta name="twitter:image" content="https://appadaycreator.github.io/assets/ogp-default.png">
+    <!-- GTM -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TXQGZRF9');</script>
+    <!-- Clarity -->
+    <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","s3t9vl8h3v");</script>
+    <!-- AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8427583028015858" crossorigin="anonymous"></script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebApplication","name":"観葉植物図鑑・育て方検索","url":"https://appadaycreator.github.io/plant-encyclopedia/","description":"観葉植物30種以上の育て方・水やり頻度・日光を無料で検索。","applicationCategory":"LifestyleApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"}}
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #f7fbf4;
+            --surface: #ffffff;
+            --surface-2: #f0f7ed;
+            --border: rgba(74,103,65,0.1);
+            --shadow-sm: 0 1px 4px rgba(30,60,24,0.07), 0 1px 2px rgba(30,60,24,0.04);
+            --shadow-md: 0 6px 20px rgba(30,60,24,0.09), 0 2px 8px rgba(30,60,24,0.05);
+            --shadow-lg: 0 16px 48px rgba(30,60,24,0.12), 0 4px 16px rgba(30,60,24,0.06);
+            --primary: #3d6b31;
+            --primary-mid: #5a8f4a;
+            --primary-light: #e5f0e2;
+            --primary-pale: #f2f8f0;
+            --accent: #8fb87f;
+            --warm: #c4a46b;
+            --text: #1a2e18;
+            --text-secondary: #4a6741;
+            --text-muted: #8ba882;
+            --radius: 18px;
+            --radius-sm: 12px;
+            --radius-lg: 24px;
+            --radius-full: 100px;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Inter', 'Hiragino Sans', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
+
+        /* ===== Hero Header ===== */
+        .hero {
+            background: linear-gradient(160deg, #2d5225 0%, #3d6b31 40%, #5a8f4a 80%, #7aad68 100%);
+            padding: 48px 24px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '🌿🍃🌱🪴🌿🍃🌱';
+            position: absolute;
+            top: -10px; left: -20px; right: -20px;
+            font-size: 4rem;
+            opacity: 0.06;
+            letter-spacing: 8px;
+            pointer-events: none;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.9);
+            border-radius: var(--radius-full);
+            padding: 6px 16px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: 0.02em;
+        }
+        .hero h1 { font-size: clamp(1.4rem,5vw,2rem); font-weight: 800; color: #fff; margin-bottom: 10px; letter-spacing: -0.02em; }
+        .hero p { font-size: 0.88rem; color: rgba(255,255,255,0.82); max-width: 400px; margin: 0 auto 28px; }
+
+        /* ===== Search ===== */
+        .search-wrap {
+            max-width: 520px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .search-icon {
+            position: absolute;
+            left: 18px; top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            pointer-events: none;
+        }
+        .search-input {
+            width: 100%;
+            padding: 16px 20px 16px 50px;
+            border: none;
+            border-radius: var(--radius) var(--radius) 0 0;
+            font-size: 0.95rem;
+            font-family: inherit;
+            color: var(--text);
+            background: var(--surface);
+            outline: none;
+            box-shadow: 0 -4px 20px rgba(30,60,24,0.15);
+        }
+        .search-input::placeholder { color: var(--text-muted); }
+
+        /* ===== Filters ===== */
+        .filter-bar {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 14px 20px;
+            overflow-x: auto;
+            white-space: nowrap;
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        .filter-group { display: inline-flex; gap: 8px; align-items: center; }
+        .filter-label { font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-right: 4px; }
+        .filter-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 6px 14px;
+            border-radius: var(--radius-full);
+            border: 1.5px solid var(--border);
+            background: var(--surface);
+            color: var(--text-secondary);
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.18s ease-out;
+            white-space: nowrap;
+        }
+        .filter-chip:hover { border-color: var(--primary); color: var(--primary); transform: scale(1.03); }
+        .filter-chip.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+        /* ===== Main ===== */
+        .main { max-width: 640px; margin: 0 auto; padding: 28px 20px 80px; }
+
+        /* ===== Nav ===== */
+        .nav-tabs {
+            display: flex; gap: 4px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 4px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+        .nav-tab {
+            flex: 1; padding: 9px 12px;
+            border: none; background: none;
+            border-radius: 9px;
+            font-size: 0.82rem; font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s ease-out;
+            display: flex; align-items: center; justify-content: center; gap: 5px;
+        }
+        .nav-tab:hover { color: var(--text-secondary); background: var(--surface-2); }
+        .nav-tab.active { background: var(--primary); color: #fff; }
+        .panel { display: none; }
+        .panel.active { display: block; }
+
+        /* ===== Results count ===== */
+        .results-meta {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        .results-count { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; }
+        .sort-select {
+            font-size: 0.78rem; font-weight: 600; color: var(--text-secondary);
+            border: 1px solid var(--border); border-radius: 8px;
+            padding: 5px 10px; background: var(--surface); cursor: pointer;
+            transition: border-color 0.15s;
+        }
+        .sort-select:focus { outline: none; border-color: var(--primary); }
+
+        /* ===== Plant Grid ===== */
+        .plant-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        @media (min-width: 480px) { .plant-grid { grid-template-columns: repeat(3,1fr); } }
+
+        .plant-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+        }
+        .plant-card:hover { transform: translateY(-4px) scale(1.01); box-shadow: var(--shadow-md); }
+        .plant-card-img {
+            aspect-ratio: 4/3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            position: relative;
+        }
+        .plant-card-img.bg-beginner { background: linear-gradient(135deg,#e5f0e2,#c8e0c2); }
+        .plant-card-img.bg-intermediate { background: linear-gradient(135deg,#fef3c7,#fde68a); }
+        .plant-card-img.bg-advanced { background: linear-gradient(135deg,#fee2e2,#fca5a5); }
+        .plant-card-img.bg-easy { background: linear-gradient(135deg,#d1fae5,#6ee7b7); }
+        .fav-btn {
+            position: absolute; top: 8px; right: 8px;
+            width: 28px; height: 28px;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(4px);
+            border: none; border-radius: 8px;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.9rem;
+            transition: all 0.15s ease-out;
+        }
+        .fav-btn:hover { transform: scale(1.12); background: #fff; }
+        .fav-btn.active { background: #fee2e2; }
+        .difficulty-badge {
+            position: absolute; bottom: 8px; left: 8px;
+            padding: 3px 9px;
+            border-radius: var(--radius-full);
+            font-size: 0.65rem;
+            font-weight: 700;
+            backdrop-filter: blur(8px);
+        }
+        .difficulty-badge.beginner { background: rgba(61,107,49,0.9); color: #fff; }
+        .difficulty-badge.intermediate { background: rgba(180,130,20,0.9); color: #fff; }
+        .difficulty-badge.advanced { background: rgba(185,28,28,0.85); color: #fff; }
+        .difficulty-badge.easy { background: rgba(5,150,105,0.9); color: #fff; }
+        .plant-card-body { padding: 12px 14px 14px; }
+        .plant-name { font-size: 0.9rem; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+        .plant-latin { font-size: 0.68rem; color: var(--text-muted); font-style: italic; margin-bottom: 8px; }
+        .plant-stats { display: flex; flex-wrap: wrap; gap: 5px; }
+        .stat-chip {
+            display: inline-flex; align-items: center; gap: 3px;
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            font-size: 0.67rem; font-weight: 600;
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        /* ===== Detail Modal ===== */
+        .modal-overlay {
+            position: fixed; inset: 0;
+            background: rgba(20,40,18,0.55);
+            backdrop-filter: blur(6px);
+            z-index: 200;
+            display: none;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        .modal-overlay.open { display: flex; }
+        .modal {
+            background: var(--surface);
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            padding: 0 0 40px;
+            width: 100%;
+            max-width: 640px;
+            max-height: 92vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            animation: slideUp 0.3s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
+        .modal-hero {
+            aspect-ratio: 16/7;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 6rem;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            position: relative;
+        }
+        .modal-close {
+            position: absolute; top: 16px; right: 16px;
+            width: 36px; height: 36px;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(4px);
+            border: none; border-radius: 10px;
+            cursor: pointer; font-size: 1.1rem;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.15s;
+        }
+        .modal-close:hover { transform: scale(1.08); background: #fff; }
+        .modal-body { padding: 24px 24px 0; }
+        .modal-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 4px; }
+        .modal-latin { font-size: 0.82rem; color: var(--text-muted); font-style: italic; margin-bottom: 20px; }
+        .care-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 24px; }
+        .care-card {
+            background: var(--primary-pale);
+            border: 1px solid var(--primary-light);
+            border-radius: var(--radius-sm);
+            padding: 14px 16px;
+        }
+        .care-icon { font-size: 1.4rem; margin-bottom: 4px; }
+        .care-label { font-size: 0.68rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+        .care-value { font-size: 0.88rem; font-weight: 700; color: var(--primary); margin-top: 2px; }
+        .care-note { font-size: 0.75rem; color: var(--text-secondary); margin-top: 2px; }
+        .section-title { font-size: 0.8rem; font-weight: 700; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 10px; }
+        .tips-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 24px; }
+        .tips-list li {
+            display: flex; align-items: flex-start; gap: 10px;
+            font-size: 0.83rem; color: var(--text-secondary);
+            background: var(--surface-2);
+            border-radius: var(--radius-sm);
+            padding: 10px 14px;
+        }
+        .tips-list li::before { content: '🌱'; flex-shrink: 0; }
+        .tags-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+        .tag {
+            padding: 5px 14px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem; font-weight: 600;
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+        .modal-fav-btn {
+            width: 100%;
+            padding: 14px;
+            border-radius: var(--radius-sm);
+            border: none;
+            font-size: 0.9rem; font-weight: 700;
+            cursor: pointer;
+            transition: all 0.18s ease-out;
+            margin-bottom: 12px;
+        }
+        .modal-fav-btn.add { background: var(--primary); color: #fff; box-shadow: 0 2px 8px rgba(61,107,49,0.3); }
+        .modal-fav-btn.add:hover { transform: scale(1.02); background: #2d5225; }
+        .modal-fav-btn.remove { background: #fee2e2; color: #dc2626; border: 1px solid #fecaca; }
+        .modal-fav-btn.remove:hover { transform: scale(1.02); }
+
+        /* ===== Empty ===== */
+        .empty-state {
+            text-align: center; padding: 72px 32px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+        }
+        .empty-icon { font-size: 3.5rem; display: block; margin-bottom: 16px; }
+        .empty-title { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+        .empty-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; }
+
+        /* ===== Amazon Section ===== */
+        .amazon-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 20px 20px 16px;
+            box-shadow: var(--shadow-sm);
+        }
+        .amazon-section-title { font-size: 0.82rem; font-weight: 700; color: var(--text-secondary); margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
+        .amazon-links { display: flex; flex-wrap: wrap; gap: 8px; }
+        .amz-link {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 9px 16px;
+            background: #fffbf0;
+            border: 1.5px solid #fde68a;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            font-size: 0.8rem; font-weight: 600; color: #92400e;
+            transition: all 0.15s ease-out;
+        }
+        .amz-link:hover { transform: scale(1.04); background: #fff3d4; box-shadow: 0 2px 8px rgba(245,158,11,0.2); }
+
+        /* ===== Toast ===== */
+        .toast {
+            position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(16px);
+            background: var(--text); color: #fff;
+            padding: 12px 20px; border-radius: var(--radius-sm);
+            font-size: 0.84rem; font-weight: 600;
+            opacity: 0; transition: all 0.28s ease-out;
+            z-index: 300; pointer-events: none;
+            box-shadow: var(--shadow-lg);
+        }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+    </style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TXQGZRF9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<!-- Hero + Search -->
+<div class="hero">
+    <div class="hero-badge">🌿 観葉植物図鑑</div>
+    <h1>あなたにぴったりの<br>植物を見つけよう</h1>
+    <p>水やり・日光・難易度から最適な観葉植物を検索</p>
+    <div class="search-wrap">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" class="search-input" id="search-input" placeholder="植物名・特徴で検索（例: 初心者、日陰OK）" oninput="render()">
+    </div>
+</div>
+
+<!-- Filter Bar -->
+<div class="filter-bar">
+    <div class="filter-group">
+        <span class="filter-label">難易度</span>
+        <button class="filter-chip active" data-filter="diff" data-val="" onclick="toggleFilter(this)">すべて</button>
+        <button class="filter-chip" data-filter="diff" data-val="超簡単" onclick="toggleFilter(this)">🌟 超簡単</button>
+        <button class="filter-chip" data-filter="diff" data-val="初心者" onclick="toggleFilter(this)">🌱 初心者向け</button>
+        <button class="filter-chip" data-filter="diff" data-val="中級" onclick="toggleFilter(this)">🌿 中級</button>
+        <button class="filter-chip" data-filter="diff" data-val="上級" onclick="toggleFilter(this)">🍀 上級</button>
+    </div>
+    <span style="display:inline-block;width:20px;"></span>
+    <div class="filter-group">
+        <span class="filter-label">日光</span>
+        <button class="filter-chip" data-filter="light" data-val="日陰OK" onclick="toggleFilter(this)">🌑 日陰OK</button>
+        <button class="filter-chip" data-filter="light" data-val="明るい日陰" onclick="toggleFilter(this)">🌤️ 明るい日陰</button>
+        <button class="filter-chip" data-filter="light" data-val="日当たり" onclick="toggleFilter(this)">☀️ 日当たり</button>
+    </div>
+</div>
+
+<!-- Main -->
+<main class="main">
+    <div class="nav-tabs">
+        <button class="nav-tab active" onclick="switchTab('all',this)">🌿 すべて</button>
+        <button class="nav-tab" onclick="switchTab('fav',this)">❤️ お気に入り</button>
+        <button class="nav-tab" onclick="switchTab('tips',this)">📖 育て方Tips</button>
+        <button class="nav-tab" onclick="switchTab('goods',this)">🛒 グッズ</button>
+    </div>
+
+    <div id="panel-all" class="panel active">
+        <div class="results-meta">
+            <span class="results-count" id="results-count"></span>
+            <select class="sort-select" id="sort-select" onchange="render()">
+                <option value="default">標準順</option>
+                <option value="difficulty">難易度順</option>
+                <option value="name">名前順</option>
+            </select>
+        </div>
+        <div class="plant-grid" id="plant-grid"></div>
+    </div>
+
+    <div id="panel-fav" class="panel">
+        <div class="plant-grid" id="fav-grid"></div>
+        <div id="fav-empty" class="empty-state" style="display:none;">
+            <span class="empty-icon">🌱</span>
+            <div class="empty-title">お気に入りがありません</div>
+            <div class="empty-desc">植物カードの ♡ を押して<br>お気に入りに追加しましょう</div>
+        </div>
+    </div>
+
+    <div id="panel-tips" class="panel">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow-sm);margin-bottom:14px;">
+            <div style="font-size:0.88rem;font-weight:700;margin-bottom:16px;color:var(--text);">🌿 観葉植物を長持ちさせる基本ルール</div>
+            <div style="display:flex;flex-direction:column;gap:12px;">
+                <div style="display:flex;gap:12px;align-items:flex-start;padding:12px;background:var(--primary-pale);border-radius:var(--radius-sm);"><span style="font-size:1.3rem;flex-shrink:0;">💧</span><div><div style="font-size:0.85rem;font-weight:700;color:var(--primary);margin-bottom:2px;">水やりは「土が乾いてから」</div><div style="font-size:0.8rem;color:var(--text-secondary);">毎日与えると根腐れの原因に。土の表面を指で触り、乾いていたらあげるのが基本。冬は頻度を半分に。</div></div></div>
+                <div style="display:flex;gap:12px;align-items:flex-start;padding:12px;background:var(--primary-pale);border-radius:var(--radius-sm);"><span style="font-size:1.3rem;flex-shrink:0;">☀️</span><div><div style="font-size:0.85rem;font-weight:700;color:var(--primary);margin-bottom:2px;">直射日光に注意</div><div style="font-size:0.8rem;color:var(--text-secondary);">ほとんどの観葉植物は直射日光が苦手。レースカーテン越しの明るい場所が理想的。窓辺でも夏の強光には注意。</div></div></div>
+                <div style="display:flex;gap:12px;align-items:flex-start;padding:12px;background:var(--primary-pale);border-radius:var(--radius-sm);"><span style="font-size:1.3rem;flex-shrink:0;">🌡️</span><div><div style="font-size:0.85rem;font-weight:700;color:var(--primary);margin-bottom:2px;">冬の寒さに注意</div><div style="font-size:0.8rem;color:var(--text-secondary);">熱帯原産の植物は10℃以下になると弱る。窓際は夜に冷えやすいので、冬は室内中央へ移動。</div></div></div>
+                <div style="display:flex;gap:12px;align-items:flex-start;padding:12px;background:var(--primary-pale);border-radius:var(--radius-sm);"><span style="font-size:1.3rem;flex-shrink:0;">🪲</span><div><div style="font-size:0.85rem;font-weight:700;color:var(--primary);margin-bottom:2px;">害虫を早期発見</div><div style="font-size:0.8rem;color:var(--text-secondary);">葉の裏を定期的にチェック。ハダニ・カイガラムシは早期発見が重要。水をスプレーして洗い流すだけで予防効果あり。</div></div></div>
+                <div style="display:flex;gap:12px;align-items:flex-start;padding:12px;background:var(--primary-pale);border-radius:var(--radius-sm);"><span style="font-size:1.3rem;flex-shrink:0;">🪴</span><div><div style="font-size:0.85rem;font-weight:700;color:var(--primary);margin-bottom:2px;">2年に1回は植え替え</div><div style="font-size:0.8rem;color:var(--text-secondary);">根が鉢からはみ出したり、水はけが悪くなったら植え替えのサイン。春（4〜5月）が最適な時期。</div></div></div>
+            </div>
+        </div>
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow-sm);">
+            <div style="font-size:0.88rem;font-weight:700;margin-bottom:14px;color:var(--text);">🌱 初心者におすすめの植物 TOP3</div>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+                <div style="display:flex;align-items:center;gap:12px;padding:12px;background:#f7fbf4;border-radius:var(--radius-sm);cursor:pointer;" onclick="openModal('sansevieria')">
+                    <span style="font-size:2rem;">🌵</span>
+                    <div><div style="font-weight:700;font-size:0.88rem;">①サンスベリア</div><div style="font-size:0.78rem;color:var(--text-muted);">月1〜2回の水やりでOK。空気清浄効果も高い。</div></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;padding:12px;background:#f7fbf4;border-radius:var(--radius-sm);cursor:pointer;" onclick="openModal('pothos')">
+                    <span style="font-size:2rem;">🍀</span>
+                    <div><div style="font-weight:700;font-size:0.88rem;">②ポトス</div><div style="font-size:0.78rem;color:var(--text-muted);">ほぼどんな環境でも育つ。ハンギングにも最適。</div></div>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px;padding:12px;background:#f7fbf4;border-radius:var(--radius-sm);cursor:pointer;" onclick="openModal('pachira')">
+                    <span style="font-size:2rem;">🌳</span>
+                    <div><div style="font-weight:700;font-size:0.88rem;">③パキラ</div><div style="font-size:0.78rem;color:var(--text-muted);">成長が早く達成感あり。耐陰性もある万能植物。</div></div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top:14px;padding:16px;background:var(--primary-light);border-radius:var(--radius);border:1px solid var(--accent);text-align:center;">
+            <div style="font-size:0.82rem;font-weight:700;color:var(--primary);margin-bottom:4px;">📔 植物の成長を記録する</div>
+            <a href="https://appadaycreator.github.io/green-diary-app/" style="font-size:0.8rem;color:var(--primary);">→ グリーンダイアリーで成長記録をつける</a>
+        </div>
+    </div>
+
+    <div id="panel-goods" class="panel">
+        <p style="font-size:0.82rem;color:var(--text-muted);margin-bottom:16px;">観葉植物を元気に育てるおすすめグッズ</p>
+        <div class="amazon-section">
+            <div class="amazon-section-title">🛒 Amazonで見る</div>
+            <div class="amazon-links">
+                <a href="https://www.amazon.co.jp/s?k=観葉植物+おしゃれ+インテリア&tag=appadaycrea0f-22" target="_blank" rel="noopener noreferrer" class="amz-link js-track-affiliate" data-platform="Amazon" data-item-name="観葉植物" data-link-type="affiliate_link">🪴 観葉植物</a>
+                <a href="https://www.amazon.co.jp/s?k=植木鉢+おしゃれ+陶器&tag=appadaycrea0f-22" target="_blank" rel="noopener noreferrer" class="amz-link js-track-affiliate" data-platform="Amazon" data-item-name="おしゃれ植木鉢" data-link-type="affiliate_link">🏺 おしゃれ鉢</a>
+                <a href="https://www.amazon.co.jp/s?k=観葉植物+土+培養土&tag=appadaycrea0f-22" target="_blank" rel="noopener noreferrer" class="amz-link js-track-affiliate" data-platform="Amazon" data-item-name="観葉植物用土" data-link-type="affiliate_link">🌱 培養土</a>
+                <a href="https://www.amazon.co.jp/s?k=液体肥料+観葉植物&tag=appadaycrea0f-22" target="_blank" rel="noopener noreferrer" class="amz-link js-track-affiliate" data-platform="Amazon" data-item-name="観葉植物液体肥料" data-link-type="affiliate_link">💊 液体肥料</a>
+                <a href="https://www.amazon.co.jp/s?k=植物育成ライト+LED+室内&tag=appadaycrea0f-22" target="_blank" rel="noopener noreferrer" class="amz-link js-track-affiliate" data-platform="Amazon" data-item-name="植物育成ライト" data-link-type="affiliate_link">💡 育成ライト</a>
+                <a href="https://www.amazon.co.jp/s?k=ジョウロ+おしゃれ+室内&tag=appadaycrea0f-22" target="_blank" rel="noopener noreferrer" class="amz-link js-track-affiliate" data-platform="Amazon" data-item-name="おしゃれジョウロ" data-link-type="affiliate_link">🚿 おしゃれジョウロ</a>
+                <a href="https://www.amazon.co.jp/s?k=観葉植物+育て方+本&tag=appadaycrea0f-22" target="_blank" rel="noopener noreferrer" class="amz-link js-track-affiliate" data-platform="Amazon" data-item-name="観葉植物育て方本" data-link-type="affiliate_link">📗 育て方の本</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Detail Modal -->
+<div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this)closeModal()">
+    <div class="modal" id="modal-content"></div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+const FAV_KEY = 'plant_favs_v1';
+const filters = { diff: '', light: '' };
+
+const PLANTS = [
+    { id:'sansevieria', emoji:'🌵', name:'サンスベリア', latin:'Sansevieria trifasciata', diff:'超簡単', bg:'bg-easy', water:'月1〜2回', light:'日陰OK', temp:'10℃以上', size:'中〜大', tags:['空気清浄','初心者最強','耐乾燥'], tips:['水のやりすぎは厳禁。冬は月1回で十分','葉が黄色くなったら根腐れのサイン','空気清浄効果が研究で実証されている','日陰にも強いが、明るい場所で育てると縦縞模様がきれいに出る'] },
+    { id:'pothos', emoji:'🍀', name:'ポトス', latin:'Epipremnum aureum', diff:'超簡単', bg:'bg-easy', water:'週1回', light:'日陰OK', temp:'10℃以上', size:'ツル性', tags:['日陰OK','吊り鉢','切り戻し容易'], tips:['水に挿すだけでも根が出る繁殖が簡単な植物','葉が黄色くなったら日光不足のサイン','伸びすぎたら切り戻して別の鉢で増やせる','水耕栽培でも育てられる'] },
+    { id:'pachira', emoji:'🌳', name:'パキラ', latin:'Pachira aquatica', diff:'初心者', bg:'bg-beginner', water:'週1回', light:'明るい日陰', temp:'10℃以上', size:'大型', tags:['成長が早い','風水','幸運の木'], tips:['土が完全に乾いてから水をたっぷり与える','春〜夏は液体肥料で元気に','幹が折れても再生力が高い','株元がバラ状に結われているものが一般的'] },
+    { id:'monstera', emoji:'🌿', name:'モンステラ', latin:'Monstera deliciosa', diff:'初心者', bg:'bg-beginner', water:'週1〜2回', light:'明るい日陰', temp:'10℃以上', size:'大型', tags:['インテリア人気No.1','葉の穴','熱帯'],  tips:['土の表面が乾いたら水やり','葉に水をスプレーすると喜ぶ','成長が早く大型になるので広い場所向き','気根が出てきたら支柱を立てよう'] },
+    { id:'ficuslyre', emoji:'🌳', name:'フィカス・ウンベラータ', latin:'Ficus lyrata', diff:'中級', bg:'bg-intermediate', water:'週1回', light:'明るい日当たり', temp:'15℃以上', size:'大型', tags:['おしゃれ','カフェ風','大きな葉'], tips:['急な環境変化（引越し等）で葉を落とすことがある','冬は水やりを減らし乾燥気味に','毎年春に一回り大きな鉢に植え替え','直射日光は葉焼けの原因に'] },
+    { id:'gajumaru', emoji:'🌳', name:'ガジュマル', latin:'Ficus microcarpa', diff:'初心者', bg:'bg-beginner', water:'週1〜2回', light:'日当たり', temp:'10℃以上', size:'中型', tags:['精霊の宿る木','ユニークな幹','沖縄'], tips:['日光が好き。できるだけ明るい場所に','冬は水を控えめに','幹が太くなるにつれて個性的な樹形に育つ','剪定して形を作るのが楽しい植物'] },
+    { id:'drakaena', emoji:'🌴', name:'ドラセナ', latin:'Dracaena', diff:'初心者', bg:'bg-beginner', water:'週1回', light:'明るい日陰', temp:'10℃以上', size:'中〜大', tags:['細長い葉','耐陰性','多種類'], tips:['水はけの良い土を好む','葉先が枯れるのは乾燥のサイン。葉水を与えよう','観葉植物の代名詞的存在で多種類ある','NASAのクリーンエア研究で効果が報告されている'] },
+    { id:'arrowhead', emoji:'🍃', name:'シンゴニウム', latin:'Syngonium podophyllum', diff:'初心者', bg:'bg-beginner', water:'週1〜2回', light:'明るい日陰', temp:'10℃以上', size:'小〜中', tags:['矢じり型の葉','テーブルサイズ','可愛い'], tips:['湿度を好むので葉水が効果的','成長に合わせてツル性になっていく','蒸れに注意して風通しを確保','高温多湿な環境が理想的'] },
+    { id:'aloe', emoji:'🌵', name:'アロエベラ', latin:'Aloe vera', diff:'超簡単', bg:'bg-easy', water:'月2〜3回', light:'日当たり', temp:'5℃以上', size:'中型', tags:['多肉植物','薬効','耐乾燥'], tips:['水を溜め込む多肉植物。乾燥気味が基本','葉の果肉は火傷や肌荒れに使われる','繁殖力旺盛。子株が出たら分けて増やせる','冬は水を月1回程度に減らす'] },
+    { id:'yukka', emoji:'🌴', name:'ユッカ（青年の木）', latin:'Yucca elephantipes', diff:'初心者', bg:'bg-beginner', water:'週1回', light:'日当たり', temp:'0℃以上', size:'大型', tags:['スタイリッシュ','乾燥に強い','縦型'], tips:['乾燥と日光が好き。水のやりすぎに注意','冬は屋外でも耐えられる強健な植物','葉先が鋭いので小さなお子さんに注意','大型になるのでスペースを確保して'] },
+    { id:'arecapalm', emoji:'🌴', name:'アレカヤシ', latin:'Dypsis lutescens', diff:'初心者', bg:'bg-beginner', water:'週2回', light:'明るい日陰', temp:'10℃以上', size:'大型', tags:['南国感','加湿効果','リビング向き'], tips:['湿度を好むのでこまめに葉水を','根詰まりしやすいので定期的な植え替えを','枯れた葉は付け根から切り取る','冬は水やりを減らし乾かし気味に'] },
+    { id:'zamioculcas', emoji:'🌿', name:'ザミオクルカス（ZZ Plant）', latin:'Zamioculcas zamiifolia', diff:'超簡単', bg:'bg-easy', water:'月2回', light:'日陰OK', temp:'10℃以上', size:'中型', tags:['最強の耐乾燥','光沢のある葉','ズボラ向き'], tips:['水を根に蓄える性質があり乾燥に超強い','ほぼ放置でも育つ最強のズボラ植物','直射日光は避ける','成長は遅いがとにかく丈夫'] },
+    { id:'calathea', emoji:'🌈', name:'カラテア', latin:'Calathea', diff:'上級', bg:'bg-advanced', water:'週2〜3回', light:'日陰', temp:'15℃以上', size:'中型', tags:['柄が美しい','夜に葉を閉じる','高湿度'], tips:['蛇口の水は使わず浄水・雨水・汲み置き水が最適','高湿度を好む。加湿器の近くに置くのがおすすめ','直射日光はNG。日陰でも育つ','葉が枯れやすい繊細な植物。環境に敏感'] },
+    { id:'caladium', emoji:'🌺', name:'カラジウム', latin:'Caladium bicolor', diff:'上級', bg:'bg-advanced', water:'週2〜3回', light:'明るい日陰', temp:'18℃以上', size:'中型', tags:['カラフルな葉','球根','夏型'], tips:['冬は休眠するため葉が枯れても心配しない','高温多湿を好む夏型の植物','水不足になるとすぐ葉が垂れてくる','寒さに非常に弱いので室内管理を徹底'] },
+    { id:'fern', emoji:'🌿', name:'シダ植物（アジアンタム）', latin:'Adiantum', diff:'上級', bg:'bg-advanced', water:'毎日', light:'日陰', temp:'10℃以上', size:'小〜中', tags:['繊細な葉','高湿度','テラリウム'], tips:['とにかく乾燥に弱い。葉水も毎日必要','日陰でも育つが、完全な暗所はNG','根がタイトになりやすいので早めに植え替え','加湿器・テラリウム・浴室が適している'] },
+    { id:'peperomia', emoji:'🌱', name:'ペペロミア', latin:'Peperomia', diff:'初心者', bg:'bg-beginner', water:'週1回', light:'明るい日陰', temp:'10℃以上', size:'小型', tags:['コンパクト','多肉質','多種類'], tips:['乾燥に比較的強く水やりを忘れがちな人向き','葉に厚みがあり水を蓄えられる多肉質植物','多種多様な葉の形が楽しめる','デスクに置くのに最適なサイズ感'] },
+    { id:'succulent', emoji:'🌵', name:'多肉植物', latin:'Succulents', diff:'超簡単', bg:'bg-easy', water:'月2〜3回', light:'日当たり', temp:'0℃以上', size:'小型', tags:['乾燥に強い','寄せ植え','春秋型'], tips:['土が完全に乾いてから水やり','日光不足になると徒長（ひょろひょろ）する','寄せ植えで可愛い寄せ植えを楽しめる','多くは冬季に休眠するため水を控える'] },
+    { id:'cactus', emoji:'🌵', name:'サボテン', latin:'Cactaceae', diff:'超簡単', bg:'bg-easy', water:'月1〜2回', light:'日当たり', temp:'0℃以上', size:'小〜大', tags:['とにかく丈夫','砂漠植物','多種類'], tips:['水は少なめ。特に冬は月1回以下で','日光が大好き。できる限り日当たりの良い場所に','土は砂漠植物用の水はけの良いものを','棘があるのでお子さんとペットに注意'] },
+    { id:'strelitzia', emoji:'🌺', name:'ストレリチア（極楽鳥花）', latin:'Strelitzia reginae', diff:'中級', bg:'bg-intermediate', water:'週1〜2回', light:'日当たり', temp:'5℃以上', size:'大型', tags:['豪華な花','南アフリカ原産','リゾート感'], tips:['日光が大好き。屋外でも育てられる','根詰まりすると花付きが良くなることも','花が咲くまで数年かかる場合がある','乾燥気味の管理が花を咲かせるコツ'] },
+    { id:'schefflera', emoji:'🌳', name:'シェフレラ（カポック）', latin:'Schefflera arboricola', diff:'初心者', bg:'bg-beginner', water:'週1〜2回', light:'明るい日陰', temp:'10℃以上', size:'中〜大', tags:['丈夫','成長が早い','手のひら型の葉'], tips:['耐陰性が高く日陰でも育つ強健植物','成長が早いので定期的な剪定が必要','寒さにも比較的強い','幹を複数本まとめて育てると見栄えが良い'] },
+    { id:'dieffenbachia', emoji:'🌿', name:'ディフェンバキア', latin:'Dieffenbachia', diff:'初心者', bg:'bg-beginner', water:'週1回', light:'明るい日陰', temp:'10℃以上', size:'中〜大', tags:['大きな葉','耐陰性','観葉植物の定番'], tips:['樹液が有毒なので取り扱い注意（手袋を）','乾燥に強く日陰でも育てやすい','葉が傷みやすいので壁や棚に当たらないよう注意','過湿に注意して水はけを確保'] },
+    { id:'koidea', emoji:'🌿', name:'コウモリラン（ビカクシダ）', latin:'Platycerium bifurcatum', diff:'中級', bg:'bg-intermediate', water:'週1〜2回', light:'明るい日陰', temp:'10℃以上', size:'中型', tags:['壁掛け','ユニークな形','着生植物'], tips:['水苔に植え付けてヘゴ板や流木に着けて飾る','貯水葉（盾形の葉）は茶色くなっても切らない','過湿を嫌う。完全に乾いてから水を与える','素材感がインテリアアクセントになる'] },
+    { id:'anthurium', emoji:'🌺', name:'アンスリウム', latin:'Anthurium andreanum', diff:'中級', bg:'bg-intermediate', water:'週2回', light:'明るい日陰', temp:'15℃以上', size:'中型', tags:['ハート型の花','観葉・花両方','光沢がある'], tips:['高湿度を好む。葉水を欠かさず','直射日光で葉焼けするので避ける','花が終わっても切らずにそのまま','根詰まりするとつぼみが出にくくなる'] },
+    { id:'rubber', emoji:'🌳', name:'ゴムの木（フィカス）', latin:'Ficus elastica', diff:'初心者', bg:'bg-beginner', water:'週1〜2回', light:'明るい場所', temp:'5℃以上', size:'大型', tags:['肉厚の葉','光沢','丈夫'], tips:['葉を定期的に濡らしたティッシュで拭くと光沢が戻る','葉が落ちる場合は環境変化か水のやりすぎ','バリエガタ（斑入り）などカラフルな品種も人気','剪定後の白い樹液は皮膚に注意'] },
+    { id:'orchid', emoji:'🌸', name:'胡蝶蘭', latin:'Phalaenopsis', diff:'中級', bg:'bg-intermediate', water:'週1回', light:'明るい日陰', temp:'15℃以上', size:'中型', tags:['豪華な花','贈り物','長持ち'], tips:['花が終わったら花茎を節のところでカットすると再咲きする','根が緑色なら水分十分、白ければ水が必要','ビニールポットのまま飾り鉢に入れると管理しやすい','直射日光は葉焼けの原因になるので避ける'] },
+    { id:'spathiphyllum', emoji:'🌸', name:'スパティフィラム', latin:'Spathiphyllum', diff:'中級', bg:'bg-intermediate', water:'週2回', light:'日陰', temp:'10℃以上', size:'中型', tags:['白い花','空気清浄','日陰で花が咲く'], tips:['水不足になると葉がくたっとする→水やりのサインになる','日陰でも花が咲く希少な植物','高湿度と適度な肥料で花付きが良くなる','NASAの空気清浄植物リストに選ばれている'] },
+    { id:'herbbasil', emoji:'🌿', name:'バジル（ハーブ）', latin:'Ocimum basilicum', diff:'初心者', bg:'bg-beginner', water:'毎日〜週2回', light:'日当たり', temp:'15℃以上', size:'小〜中', tags:['食べられる','料理に使える','キッチンガーデン'], tips:['土が乾いたらたっぷり水やり','日光が大好きで屋外や明るい窓辺が最適','花が咲くと葉が固くなるため早めに摘む','冬は苦手なので春〜秋が育て時'] },
+    { id:'lavender', emoji:'💜', name:'ラベンダー（ハーブ）', latin:'Lavandula', diff:'中級', bg:'bg-intermediate', water:'週2回', light:'日当たり', temp:'0℃以上', size:'中型', tags:['香りが良い','アロマ','乾燥に強い'], tips:['日光と通風が大切。蒸れに弱い','水はけの良い土と石灰質の土が好き','花が終わったら1/3程度切り戻す','日本の湿気に弱い品種あり。耐暑性品種を選ぼう'] },
+    { id:'airplant', emoji:'🌿', name:'エアプランツ（チランジア）', latin:'Tillandsia', diff:'初心者', bg:'bg-beginner', water:'週1〜2回（ソーキング）', light:'明るい日陰', temp:'5℃以上', size:'小型', tags:['土不要','ユニーク','壁掛けOK'], tips:['週1〜2回水にドブ漬け（ソーキング）が基本','その後は必ずしっかり乾かす（根腐れ防止）','土がなくてもOK。石・木・コルクに飾れる','湿度と通風のバランスが重要'] },
+    { id:'oriza', emoji:'🌿', name:'オリヅルラン', latin:'Chlorophytum comosum', diff:'超簡単', bg:'bg-easy', water:'週1回', light:'日陰OK', temp:'0℃以上', size:'ランナー型', tags:['繁殖が簡単','吊り鉢','ランナー（匍匐枝）'], tips:['子株がぶら下がってくるので水に浸けて発根させ株分けできる','直射日光を避ける。斑入り種は明るい場所で','水のやりすぎに注意','丈夫で育てやすい。キッチンなど場所を選ばない'] },
+];
+
+function getFavs() { try { return new Set(JSON.parse(localStorage.getItem(FAV_KEY)||'[]')); } catch(e){ return new Set(); } }
+function setFavs(s) { try { localStorage.setItem(FAV_KEY, JSON.stringify([...s])); } catch(e){} }
+
+function toggleFav(id, event) {
+    event && event.stopPropagation();
+    const favs = getFavs();
+    if (favs.has(id)) { favs.delete(id); showToast('お気に入りから削除しました'); }
+    else { favs.add(id); showToast('♡ お気に入りに追加しました'); }
+    setFavs(favs);
+    render();
+}
+
+function toggleFilter(el) {
+    const fk = el.dataset.filter;
+    const val = el.dataset.val;
+    document.querySelectorAll(`[data-filter="${fk}"]`).forEach(b => b.classList.remove('active'));
+    filters[fk] = (filters[fk] === val) ? '' : val;
+    el.classList.toggle('active', filters[fk] === val);
+    if (!val) el.classList.add('active');
+    render();
+}
+
+const DIFF_ORDER = { '超簡単': 0, '初心者': 1, '中級': 2, '上級': 3 };
+
+function render() {
+    const q = document.getElementById('search-input').value.toLowerCase();
+    const sort = document.getElementById('sort-select').value;
+    const favs = getFavs();
+
+    let plants = PLANTS.filter(p => {
+        if (q && !p.name.toLowerCase().includes(q) && !p.tags.join(' ').includes(q) && !p.light.includes(q) && !p.diff.includes(q)) return false;
+        if (filters.diff && p.diff !== filters.diff) return false;
+        if (filters.light && p.light !== filters.light) return false;
+        return true;
+    });
+
+    if (sort === 'difficulty') plants.sort((a,b) => (DIFF_ORDER[a.diff]||0) - (DIFF_ORDER[b.diff]||0));
+    else if (sort === 'name') plants.sort((a,b) => a.name.localeCompare(b.name));
+
+    document.getElementById('results-count').textContent = `${plants.length}種類を表示`;
+    const grid = document.getElementById('plant-grid');
+    if (!plants.length) {
+        grid.innerHTML = `<div style="grid-column:1/-1;"><div class="empty-state"><span class="empty-icon">🌱</span><div class="empty-title">見つかりませんでした</div><div class="empty-desc">検索条件を変えてみてください</div></div></div>`;
+    } else {
+        grid.innerHTML = plants.map(p => plantCard(p, favs)).join('');
+    }
+
+    // お気に入り
+    const favPlants = PLANTS.filter(p => favs.has(p.id));
+    const favGrid = document.getElementById('fav-grid');
+    const favEmpty = document.getElementById('fav-empty');
+    if (!favPlants.length) { favGrid.innerHTML = ''; favEmpty.style.display = 'block'; }
+    else { favEmpty.style.display = 'none'; favGrid.innerHTML = favPlants.map(p => plantCard(p, favs)).join(''); }
+}
+
+function plantCard(p, favs) {
+    const isFav = favs.has(p.id);
+    const diffClass = { '超簡単': 'easy', '初心者': 'beginner', '中級': 'intermediate', '上級': 'advanced' }[p.diff] || 'beginner';
+    return `<div class="plant-card" onclick="openModal('${p.id}')">
+        <div class="plant-card-img ${p.bg}">
+            <span>${p.emoji}</span>
+            <button class="fav-btn ${isFav?'active':''}" onclick="toggleFav('${p.id}',event)" title="お気に入り">${isFav?'❤️':'🤍'}</button>
+            <span class="difficulty-badge ${diffClass}">${p.diff}</span>
+        </div>
+        <div class="plant-card-body">
+            <div class="plant-name">${p.name}</div>
+            <div class="plant-latin">${p.latin}</div>
+            <div class="plant-stats">
+                <span class="stat-chip">💧 ${p.water}</span>
+                <span class="stat-chip">☀️ ${p.light}</span>
+            </div>
+        </div>
+    </div>`;
+}
+
+function openModal(id) {
+    const p = PLANTS.find(p => p.id === id);
+    if (!p) return;
+    const favs = getFavs();
+    const isFav = favs.has(p.id);
+    const diffClass = { '超簡単': 'easy', '初心者': 'beginner', '中級': 'intermediate', '上級': 'advanced' }[p.diff] || 'beginner';
+
+    document.getElementById('modal-content').innerHTML = `
+        <div class="modal-hero ${p.bg}" style="font-size:6rem;border-radius:24px 24px 0 0;">
+            <span>${p.emoji}</span>
+            <button class="modal-close" onclick="closeModal()">✕</button>
+        </div>
+        <div class="modal-body">
+            <div class="modal-title">${p.name}</div>
+            <div class="modal-latin">${p.latin}</div>
+            <div class="care-grid">
+                <div class="care-card"><div class="care-icon">💧</div><div class="care-label">水やり</div><div class="care-value">${p.water}</div></div>
+                <div class="care-card"><div class="care-icon">☀️</div><div class="care-label">日光</div><div class="care-value">${p.light}</div></div>
+                <div class="care-card"><div class="care-icon">🌡️</div><div class="care-label">最低温度</div><div class="care-value">${p.temp}</div></div>
+                <div class="care-card"><div class="care-icon">📏</div><div class="care-label">大きさ</div><div class="care-value">${p.size}</div></div>
+            </div>
+            <div class="section-title">育て方のポイント</div>
+            <ul class="tips-list">${p.tips.map(t => `<li>${t}</li>`).join('')}</ul>
+            <div class="section-title">特徴タグ</div>
+            <div class="tags-wrap">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+            <button class="modal-fav-btn ${isFav?'remove':'add'}" onclick="toggleFav('${p.id}');this.classList.toggle('add');this.classList.toggle('remove');this.textContent=getFavs().has('${p.id}')?'♡ お気に入りから削除':'♡ お気に入りに追加'">
+                ${isFav ? '♡ お気に入りから削除' : '♡ お気に入りに追加'}
+            </button>
+            <a href="https://www.amazon.co.jp/s?k=${encodeURIComponent(p.name+' 観葉植物')}&tag=appadaycrea0f-22" target="_blank" rel="noopener noreferrer" class="js-track-affiliate" data-platform="Amazon" data-item-name="${p.name}" data-link-type="affiliate_link"
+               style="display:block;width:100%;padding:12px;background:#fff9f0;border:1.5px solid #fde68a;border-radius:12px;text-align:center;text-decoration:none;font-size:0.85rem;font-weight:600;color:#92400e;transition:all .15s ease-out;"
+               onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform=''">
+                🛒 ${p.name}をAmazonで探す
+            </a>
+        </div>`;
+    document.getElementById('modal-overlay').classList.add('open');
+}
+
+function closeModal() {
+    document.getElementById('modal-overlay').classList.remove('open');
+}
+
+function switchTab(name, el) {
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    el.classList.add('active');
+    document.getElementById('panel-'+name).classList.add('active');
+}
+
+function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+document.addEventListener('click', function(e){
+    const el = e.target.closest('.js-track-affiliate');
+    if (!el) return;
+    if (typeof dataLayer !== 'undefined') dataLayer.push({event:'affiliate_click',affiliate_item:el.dataset.itemName,affiliate_platform:el.dataset.platform});
+});
+
+window.onerror = function(msg,src,line){try{console.error('[AppError]',msg,'at',src+':'+line);}catch(e){}return false;};
+window.addEventListener('unhandledrejection',function(e){console.error('[PromiseError]',e.reason);});
+
+document.addEventListener('DOMContentLoaded', function(){
+    render();
+    var l = document.getElementById('page-loader');
+    if(l){l.style.opacity='0';l.style.transition='opacity 0.3s';setTimeout(function(){l.remove();},350);}
+});
+</script>
+
+<div id="page-loader" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#f7fbf4;z-index:9999;display:flex;align-items:center;justify-content:center;">
+    <div style="width:36px;height:36px;border:3px solid #c8e0c2;border-top-color:#3d6b31;border-radius:50%;animation:spin-loader 0.7s linear infinite;"></div>
+</div>
+<style>@keyframes spin-loader{to{transform:rotate(360deg)}}</style>
+</body>
+</html>
