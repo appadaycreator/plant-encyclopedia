@@ -835,8 +835,6 @@ document.addEventListener('DOMContentLoaded', function(){
   <select name="pe_sel" required><option value="a">A</option><option value="b">B</option></select>
 </div>
 <script>
-window.onerror=function(m,s,l){try{console.error("[pe]",m,s,l);}catch(e){}return false;};
-window.addEventListener("unhandledrejection",function(e){try{console.warn("[pe] unhandled",e.reason);}catch(e){}});
 window.peSafeGet=function(k,d){try{var v=localStorage.getItem(k);return v!==null?JSON.parse(v):d;}catch(e){return d;}};
 window.peSafeSet=function(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true;}catch(e){return false;}};
 window.peSafeRm=function(k){try{localStorage.removeItem(k);return true;}catch(e){return false;}};
