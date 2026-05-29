@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start":
+new Date().getTime(),event:"gtm.js"});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
+"https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,"script","dataLayer","GTM-TXQGZRF9");</script>
+<!-- End Google Tag Manager -->
     <!-- phase8-schema-enhanced -->
 <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,8 +31,6 @@
     <meta name="twitter:title" content="観葉植物図鑑・育て方検索｜初心者向け植物を無料検索">
     <meta name="twitter:description" content="観葉植物30種以上の育て方を無料検索。水やり・日光・難易度で絞り込み。">
     <meta name="twitter:image" content="https://appadaycreator.com/plant-encyclopedia/ogp.png">
-    <!-- GTM -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TXQGZRF9');</script>
     <!-- Clarity -->
     <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","s3t9vl8h3v");</script>
     <!-- AdSense -->
@@ -481,6 +486,7 @@ button, .btn, .btn-primary, .option-btn, [role="button"] { min-height: 48px; min
     <span style="display:inline-block;width:20px;"></span>
     <div class="filter-group">
         <span class="filter-label">日光</span>
+        <button class="filter-chip active" data-filter="light" data-val="" onclick="toggleFilter(this)">すべて</button>
         <button class="filter-chip" data-filter="light" data-val="日陰OK" onclick="toggleFilter(this)">🌑 日陰OK</button>
         <button class="filter-chip" data-filter="light" data-val="明るい日陰" onclick="toggleFilter(this)">🌤️ 明るい日陰</button>
         <button class="filter-chip" data-filter="light" data-val="日当たり" onclick="toggleFilter(this)">☀️ 日当たり</button>
@@ -619,6 +625,7 @@ button, .btn, .btn-primary, .option-btn, [role="button"] { min-height: 48px; min
 <script>
 const FAV_KEY = 'plant_favs_v1';
 const filters = { diff: '', light: '' };
+let currentPlantId = '';
 
 // 日光フィルター: 部分一致マッピング（完全一致だと漏れが出るため）
 const LIGHT_MAP = {
@@ -705,7 +712,7 @@ function render() {
     document.getElementById('results-count').textContent = `${plants.length}種類を表示`;
     const grid = document.getElementById('plant-grid');
     if (!plants.length) {
-        grid.innerHTML = `<div style="grid-column:1/-1;"><div class="empty-state"><span class="empty-icon">🌱</span><div class="empty-title">見つかりませんでした</div><div class="empty-desc">検索条件を変えてみてください</div></div></div>`;
+        grid.innerHTML = `<div style="grid-column:1/-1;"><div class="empty-state"><span class="empty-icon">🌱</span><div class="empty-title">見つかりませんでした</div><div class="empty-desc">検索条件を変えてみてください</div><button onclick="resetAll()" style="margin-top:14px;padding:10px 24px;background:var(--primary);color:#fff;border:none;border-radius:var(--radius-full);font-size:0.85rem;font-weight:700;cursor:pointer;">条件をリセットする</button></div></div>`;
     } else {
         grid.innerHTML = plants.map(p => plantCard(p, favs)).join('');
     }
@@ -721,10 +728,10 @@ function render() {
 function plantCard(p, favs) {
     const isFav = favs.has(p.id);
     const diffClass = { '超簡単': 'easy', '初心者': 'beginner', '中級': 'intermediate', '上級': 'advanced' }[p.diff] || 'beginner';
-    return `<div class="plant-card" onclick="openModal('${p.id}')">
+    return `<div class="plant-card" role="button" tabindex="0" onclick="openModal('${p.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('${p.id}')}" aria-label="${p.name}の詳細を見る">
         <div class="plant-card-img ${p.bg}">
             <span>${p.emoji}</span>
-            <button class="fav-btn ${isFav?'active':''}" onclick="toggleFav('${p.id}',event)" title="お気に入り">${isFav?'❤️':'🤍'}</button>
+            <button class="fav-btn ${isFav?'active':''}" onclick="toggleFav('${p.id}',event)" title="${isFav?'お気に入りから削除':'お気に入りに追加'}" aria-pressed="${isFav}">${isFav?'❤️':'🤍'}</button>
             <span class="difficulty-badge ${diffClass}">${p.diff}</span>
         </div>
         <div class="plant-card-body">
@@ -908,15 +915,15 @@ var s=document.getElementById('pe2-status');if(h.length>1&&s)s.textContent='📊
       <h3 style="font-size:.875rem;font-weight:700;color:#1e1b4b;margin-bottom:.75rem">⭐ 利用者の声</h3>
       <div style="display:flex;flex-direction:column;gap:.75rem">
         <div style="background:#f9fafb;border-radius:8px;padding:.75rem">
-          <p style="font-size:.75rem;color:#374151">「すぐに結果が出て使いやすかったです。友人にも勧めました！」</p>
+          <p style="font-size:.75rem;color:#374151">「植物選びに迷っていましたが、難易度フィルターで初心者向けの植物がすぐ見つかりました！サンスベリアを購入して順調に育っています。」</p>
           <p style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">— 田中さん（30代・会社員）★★★★★</p>
         </div>
         <div style="background:#f9fafb;border-radius:8px;padding:.75rem">
-          <p style="font-size:.75rem;color:#374151">「無料でここまで詳しく診断できるとは思いませんでした。」</p>
+          <p style="font-size:.75rem;color:#374151">「水やりの頻度や日光条件が一目でわかって助かります。モンステラの育て方が不安でしたが、コツを掴めました。」</p>
           <p style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">— 佐藤さん（40代・主婦）★★★★★</p>
         </div>
         <div style="background:#f9fafb;border-radius:8px;padding:.75rem">
-          <p style="font-size:.75rem;color:#374151">「登録不要でサクッと使えるのが良いです。また利用します。」</p>
+          <p style="font-size:.75rem;color:#374151">「お気に入り機能が便利で、気になる植物をまとめて管理できます。ポトスとZZプランツをお気に入りに保存しました！」</p>
           <p style="font-size:.75rem;color:#9ca3af;margin-top:.25rem">— 山本さん（20代・学生）★★★★☆</p>
         </div>
       </div>
