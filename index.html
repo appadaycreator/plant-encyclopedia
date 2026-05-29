@@ -748,11 +748,13 @@ function plantCard(p, favs) {
 function openModal(id) {
     const p = PLANTS.find(p => p.id === id);
     if (!p) return;
+    currentPlantId = p.id;
     const favs = getFavs();
     const isFav = favs.has(p.id);
     const diffClass = { '超簡単': 'easy', '初心者': 'beginner', '中級': 'intermediate', '上級': 'advanced' }[p.diff] || 'beginner';
 
-    document.getElementById('modal-content').innerHTML = `
+    const mc = document.getElementById('modal-content');
+    mc.innerHTML = `
         <div class="modal-hero ${p.bg}" style="font-size:6rem;border-radius:24px 24px 0 0;">
             <span>${p.emoji}</span>
             <button class="modal-close" onclick="closeModal()">✕</button>
@@ -768,8 +770,8 @@ function openModal(id) {
             </div>
             <div class="section-title">育て方のポイント</div>
             <ul class="tips-list">${p.tips.map(t => `<li>${t}</li>`).join('')}</ul>
-            <div class="section-title">特徴タグ</div>
-            <div class="tags-wrap">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+            <div class="section-title">特徴タグ <span style="font-size:0.68rem;color:var(--text-muted);font-weight:400;">（タップで検索）</span></div>
+            <div class="tags-wrap">${p.tags.map(t => `<span class="tag" role="button" tabindex="0" style="cursor:pointer;" onclick="searchByTag('${t}')" onkeydown="if(event.key==='Enter')searchByTag('${t}')" title="${t}で検索">${t}</span>`).join('')}</div>
             <button class="modal-fav-btn ${isFav?'remove':'add'}" onclick="toggleFav('${p.id}');this.classList.toggle('add');this.classList.toggle('remove');this.textContent=getFavs().has('${p.id}')?'♡ お気に入りから削除':'♡ お気に入りに追加'">
                 ${isFav ? '♡ お気に入りから削除' : '♡ お気に入りに追加'}
             </button>
@@ -779,6 +781,7 @@ function openModal(id) {
                 🛒 ${p.name}をAmazonで探す
             </a>
         </div>`;
+    mc.scrollTop = 0;
     document.getElementById('modal-overlay').classList.add('open');
 }
 
@@ -797,6 +800,24 @@ function showToast(msg) {
     const t = document.getElementById('toast');
     t.textContent = msg; t.classList.add('show');
     setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+function resetAll() {
+    document.getElementById('search-input').value = '';
+    filters.diff = '';
+    filters.light = '';
+    document.querySelectorAll('[data-filter]').forEach(b => {
+        b.classList.remove('active');
+        if (!b.dataset.val) b.classList.add('active');
+    });
+    render();
+}
+
+function searchByTag(tag) {
+    closeModal();
+    document.getElementById('search-input').value = tag;
+    render();
+    showToast(`"${tag}" で検索中`);
 }
 
 document.addEventListener('click', function(e){
@@ -879,10 +900,33 @@ document.addEventListener("DOMContentLoaded",function(){try{var l=document.getEl
 </section>
 <script>
 function savepeResult(){
-try{var h=JSON.parse(localStorage.getItem('pe2_hist')||'[]');h.unshift({t:Date.now(),d:new Date().toLocaleDateString('ja-JP')});localStorage.setItem('pe2_hist',JSON.stringify(h.slice(0,20)));
-var s=document.getElementById('pe2-status');if(s)s.textContent='✅ '+new Date().toLocaleDateString('ja-JP')+'の記録を保存しました！';}catch(e){}}
-(function(){try{var h=JSON.parse(localStorage.getItem('pe2_hist')||'[]');
-var s=document.getElementById('pe2-status');if(h.length>1&&s)s.textContent='📊 '+h.length+'回の記録あり';}catch(e){}})();
+    try {
+        // 最後に開いた植物名を取得（currentPlantIdはグローバル変数）
+        var plantName = '';
+        try {
+            if (typeof currentPlantId !== 'undefined' && currentPlantId) {
+                var found = PLANTS.find(function(p){ return p.id === currentPlantId; });
+                if (found) plantName = found.name;
+            }
+        } catch(e2) {}
+        var h = JSON.parse(localStorage.getItem('pe2_hist') || '[]');
+        h.unshift({ t: Date.now(), d: new Date().toLocaleDateString('ja-JP'), plant: plantName });
+        localStorage.setItem('pe2_hist', JSON.stringify(h.slice(0, 20)));
+        var s = document.getElementById('pe2-status');
+        if (s) s.textContent = '✅ ' + (plantName ? plantName + ' を ' : '') + new Date().toLocaleDateString('ja-JP') + ' に記録しました！';
+    } catch(e) {}
+}
+(function(){
+    try {
+        var h = JSON.parse(localStorage.getItem('pe2_hist') || '[]');
+        var s = document.getElementById('pe2-status');
+        if (h.length > 0 && s) {
+            var last = h[0];
+            var label = last.plant ? last.plant + ' など ' : '';
+            s.textContent = '📊 ' + label + h.length + '種類を記録済み';
+        }
+    } catch(e) {}
+})();
 </script>
 
 <section style="max-width:800px;margin:0 auto 20px;padding:16px;background:#f0fdf4;border-radius:12px;">
