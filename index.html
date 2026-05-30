@@ -17,11 +17,11 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#3d6b31">
-    <meta name="description" content="観葉植物34種以上の育て方・水やり頻度・日光・温度を無料で検索。難易度別フィルターで初心者向けから上級者向けまで対応。お気に入り保存機能付き。植物の種類から育て方を即確認。">
+    <meta name="description" content="観葉植物44種以上の育て方・水やり頻度・日光・温度を無料で検索。難易度別フィルターで初心者向けから上級者向けまで対応。お気に入り保存機能付き。植物の種類から育て方を即確認。">
     <meta name="keywords" content="観葉植物,図鑑,育て方,初心者,水やり,日光,種類,一覧,モンステラ,ポトス,サンスベリア">
     <link rel="canonical" href="https://appadaycreator.com/plant-encyclopedia/">
     <meta property="og:title" content="観葉植物図鑑・育て方検索｜初心者でも失敗しない植物選び">
-    <meta property="og:description" content="観葉植物34種以上の育て方・水やり・日光・温度を無料検索。難易度別フィルターで初心者向けから上級まで。">
+    <meta property="og:description" content="観葉植物44種以上の育て方・水やり・日光・温度を無料検索。難易度別フィルターで初心者向けから上級まで。">
     <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP" />
     <meta property="og:url" content="https://appadaycreator.com/plant-encyclopedia/">
@@ -29,13 +29,13 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     <meta property="og:site_name" content="観葉植物図鑑">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="観葉植物図鑑・育て方検索｜初心者向け植物を無料検索">
-    <meta name="twitter:description" content="観葉植物34種以上の育て方を無料検索。水やり・日光・難易度で絞り込み。">
+    <meta name="twitter:description" content="観葉植物44種以上の育て方を無料検索。水やり・日光・難易度で絞り込み。">
     <meta name="twitter:image" content="https://appadaycreator.com/plant-encyclopedia/ogp.png">
     <!-- Clarity -->
     <script>(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,"clarity","script","s3t9vl8h3v");</script>
     <!-- AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8427583028015858" crossorigin="anonymous"></script>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "観葉植物図鑑・育て方検索", "url": "https://appadaycreator.com/plant-encyclopedia/", "description": "観葉植物34種以上の育て方・水やり頻度・日光を無料で検索。", "applicationCategory": "UtilityApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}}</script>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "観葉植物図鑑・育て方検索", "url": "https://appadaycreator.com/plant-encyclopedia/", "description": "観葉植物44種以上の育て方・水やり頻度・日光を無料で検索。", "applicationCategory": "UtilityApplication", "operatingSystem": "Any", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "JPY"}}</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -130,24 +130,36 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
         .filter-bar {
             background: var(--surface);
             border-bottom: 1px solid var(--border);
-            padding: 14px 20px;
-            overflow-x: auto;
-            white-space: nowrap;
+            padding: 12px 16px;
             max-width: 640px;
             margin: 0 auto;
         }
-        .filter-group { display: inline-flex; gap: 8px; align-items: center; }
-        .filter-label { font-size: 0.72rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-right: 4px; }
+        .filter-bar-main {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+        }
+        .filter-bar-extra {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center;
+            margin-top: 8px;
+        }
+        .filter-bar-extra.collapsed { display: none; }
+        .filter-group { display: inline-flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+        .filter-label { font-size: 0.68rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; margin-right: 2px; white-space: nowrap; }
         .filter-chip {
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            padding: 6px 14px;
+            padding: 5px 12px;
             border-radius: var(--radius-full);
             border: 1.5px solid var(--border);
             background: var(--surface);
             color: var(--text-secondary);
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.18s ease-out;
@@ -155,6 +167,31 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
         }
         .filter-chip:hover { border-color: var(--primary); color: var(--primary); transform: scale(1.03); }
         .filter-chip.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+        .filter-toggle-btn {
+            display: inline-flex; align-items: center; gap: 4px;
+            padding: 5px 12px;
+            border-radius: var(--radius-full);
+            border: 1.5px dashed var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.74rem; font-weight: 600;
+            cursor: pointer;
+            transition: all 0.18s ease-out;
+        }
+        .filter-toggle-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .filter-clear-btn {
+            display: none; align-items: center; gap: 4px;
+            padding: 5px 12px;
+            border-radius: var(--radius-full);
+            border: 1.5px solid #fca5a5;
+            background: #fee2e2;
+            color: #dc2626;
+            font-size: 0.74rem; font-weight: 700;
+            cursor: pointer;
+            transition: all 0.18s ease-out;
+        }
+        .filter-clear-btn:hover { background: #fecaca; }
+        .filter-clear-btn.visible { display: inline-flex; }
 
         /* ===== Main ===== */
         .main { max-width: 640px; margin: 0 auto; padding: 28px 20px 80px; }
@@ -503,9 +540,12 @@ button, .btn, .btn-primary, .option-btn, [role="button"] { min-height: 48px; min
 
 <!-- Hero + Search -->
 <div class="hero">
-    <div class="hero-badge">🌿 観葉植物図鑑</div>
+    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:0;">
+        <div class="hero-badge">🌿 観葉植物図鑑</div>
+        <div class="hero-badge" style="background:rgba(255,220,100,0.25);border-color:rgba(255,220,100,0.4);">✨ 44種掲載</div>
+    </div>
     <h1>あなたにぴったりの<br>植物を見つけよう</h1>
-    <p>水やり・日光・難易度から最適な観葉植物を検索</p>
+    <p>44種以上の観葉植物を水やり・日光・難易度から検索</p>
     <div class="search-wrap">
         <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         <input type="text" class="search-input" id="search-input" placeholder="植物名・特徴で検索（例: 初心者、日陰OK）" oninput="render()" aria-label="植物名・特徴で検索（例: 初心者、日陰OK）">
@@ -514,50 +554,58 @@ button, .btn, .btn-primary, .option-btn, [role="button"] { min-height: 48px; min
 
 <!-- Filter Bar -->
 <div class="filter-bar">
-    <div class="filter-group">
-        <span class="filter-label">難易度</span>
-        <button class="filter-chip active" data-filter="diff" data-val="" onclick="toggleFilter(this)">すべて</button>
-        <button class="filter-chip" data-filter="diff" data-val="超簡単" onclick="toggleFilter(this)">🌟 超簡単</button>
-        <button class="filter-chip" data-filter="diff" data-val="初心者" onclick="toggleFilter(this)">🌱 初心者向け</button>
-        <button class="filter-chip" data-filter="diff" data-val="中級" onclick="toggleFilter(this)">🌿 中級</button>
-        <button class="filter-chip" data-filter="diff" data-val="上級" onclick="toggleFilter(this)">🍀 上級</button>
+    <div class="filter-bar-main">
+        <div class="filter-group">
+            <span class="filter-label">難易度</span>
+            <button class="filter-chip active" data-filter="diff" data-val="" onclick="toggleFilter(this)">すべて</button>
+            <button class="filter-chip" data-filter="diff" data-val="超簡単" onclick="toggleFilter(this)">🌟 超簡単</button>
+            <button class="filter-chip" data-filter="diff" data-val="初心者" onclick="toggleFilter(this)">🌱 初心者向け</button>
+            <button class="filter-chip" data-filter="diff" data-val="中級" onclick="toggleFilter(this)">🌿 中級</button>
+            <button class="filter-chip" data-filter="diff" data-val="上級" onclick="toggleFilter(this)">🍀 上級</button>
+        </div>
+        <div class="filter-group" style="margin-left:4px;">
+            <span class="filter-label">日光</span>
+            <button class="filter-chip active" data-filter="light" data-val="" onclick="toggleFilter(this)">すべて</button>
+            <button class="filter-chip" data-filter="light" data-val="日陰OK" onclick="toggleFilter(this)">🌑 日陰OK</button>
+            <button class="filter-chip" data-filter="light" data-val="明るい日陰" onclick="toggleFilter(this)">🌤️ 明るい日陰</button>
+            <button class="filter-chip" data-filter="light" data-val="日当たり" onclick="toggleFilter(this)">☀️ 日当たり</button>
+        </div>
+        <button class="filter-toggle-btn" id="filter-toggle-btn" onclick="toggleFilterExtra()">▼ もっと絞り込む</button>
+        <button class="filter-clear-btn" id="filter-clear-btn" onclick="resetAll()">✕ クリア</button>
     </div>
-    <span style="display:inline-block;width:20px;"></span>
-    <div class="filter-group">
-        <span class="filter-label">日光</span>
-        <button class="filter-chip active" data-filter="light" data-val="" onclick="toggleFilter(this)">すべて</button>
-        <button class="filter-chip" data-filter="light" data-val="日陰OK" onclick="toggleFilter(this)">🌑 日陰OK</button>
-        <button class="filter-chip" data-filter="light" data-val="明るい日陰" onclick="toggleFilter(this)">🌤️ 明るい日陰</button>
-        <button class="filter-chip" data-filter="light" data-val="日当たり" onclick="toggleFilter(this)">☀️ 日当たり</button>
-    </div>
-    <span style="display:inline-block;width:20px;"></span>
-    <div class="filter-group">
-        <span class="filter-label">水やり</span>
-        <button class="filter-chip active" data-filter="water" data-val="" onclick="toggleFilter(this)">すべて</button>
-        <button class="filter-chip" data-filter="water" data-val="低頻度" onclick="toggleFilter(this)">🪴 低頻度</button>
-        <button class="filter-chip" data-filter="water" data-val="標準" onclick="toggleFilter(this)">💧 週1回前後</button>
-        <button class="filter-chip" data-filter="water" data-val="高頻度" onclick="toggleFilter(this)">🌊 高頻度</button>
-    </div>
-    <span style="display:inline-block;width:20px;"></span>
-    <div class="filter-group">
-        <span class="filter-label">置く場所</span>
-        <button class="filter-chip active" data-filter="place" data-val="" onclick="toggleFilter(this)">すべて</button>
-        <button class="filter-chip" data-filter="place" data-val="リビング" onclick="toggleFilter(this)">🛋️ リビング</button>
-        <button class="filter-chip" data-filter="place" data-val="書斎" onclick="toggleFilter(this)">💻 書斎/デスク</button>
-        <button class="filter-chip" data-filter="place" data-val="玄関" onclick="toggleFilter(this)">🚪 玄関</button>
-        <button class="filter-chip" data-filter="place" data-val="キッチン" onclick="toggleFilter(this)">🍳 キッチン</button>
-        <button class="filter-chip" data-filter="place" data-val="寝室" onclick="toggleFilter(this)">🛏️ 寝室</button>
-    </div>
-    <span style="display:inline-block;width:20px;"></span>
-    <div class="filter-group">
-        <span class="filter-label">安全性</span>
-        <button class="filter-chip active" data-filter="safe" data-val="" onclick="toggleFilter(this)">すべて</button>
-        <button class="filter-chip" data-filter="safe" data-val="safe" onclick="toggleFilter(this)">🐾 ペット安全のみ</button>
+    <div class="filter-bar-extra collapsed" id="filter-bar-extra">
+        <div class="filter-group">
+            <span class="filter-label">水やり</span>
+            <button class="filter-chip active" data-filter="water" data-val="" onclick="toggleFilter(this)">すべて</button>
+            <button class="filter-chip" data-filter="water" data-val="低頻度" onclick="toggleFilter(this)">🪴 低頻度</button>
+            <button class="filter-chip" data-filter="water" data-val="標準" onclick="toggleFilter(this)">💧 週1回前後</button>
+            <button class="filter-chip" data-filter="water" data-val="高頻度" onclick="toggleFilter(this)">🌊 高頻度</button>
+        </div>
+        <div class="filter-group">
+            <span class="filter-label">置く場所</span>
+            <button class="filter-chip active" data-filter="place" data-val="" onclick="toggleFilter(this)">すべて</button>
+            <button class="filter-chip" data-filter="place" data-val="リビング" onclick="toggleFilter(this)">🛋️ リビング</button>
+            <button class="filter-chip" data-filter="place" data-val="書斎" onclick="toggleFilter(this)">💻 書斎</button>
+            <button class="filter-chip" data-filter="place" data-val="玄関" onclick="toggleFilter(this)">🚪 玄関</button>
+            <button class="filter-chip" data-filter="place" data-val="キッチン" onclick="toggleFilter(this)">🍳 キッチン</button>
+            <button class="filter-chip" data-filter="place" data-val="寝室" onclick="toggleFilter(this)">🛏️ 寝室</button>
+        </div>
+        <div class="filter-group">
+            <span class="filter-label">安全性</span>
+            <button class="filter-chip active" data-filter="safe" data-val="" onclick="toggleFilter(this)">すべて</button>
+            <button class="filter-chip" data-filter="safe" data-val="safe" onclick="toggleFilter(this)">🐾 ペット安全のみ</button>
+        </div>
     </div>
 </div>
 
+<!-- Seasonal Banner -->
+<div id="seasonal-banner" style="max-width:640px;margin:12px auto 0;padding:0 20px;"></div>
+
 <!-- Main -->
 <main id="main" role="main" class="main">
+    <!-- Stats Cards -->
+    <div id="stats-cards" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;"></div>
+
     <div class="nav-tabs">
         <button class="nav-tab active" onclick="switchTab('all',this)">🌿 すべて</button>
         <button class="nav-tab" onclick="switchTab('fav',this)">❤️ お気に入り</button>
@@ -791,6 +839,7 @@ function toggleFilter(el) {
     filters[fk] = (filters[fk] === val) ? '' : val;
     el.classList.toggle('active', filters[fk] === val);
     if (!val) el.classList.add('active');
+    updateFilterClearBtn();
     render();
 }
 
@@ -820,7 +869,7 @@ function render() {
     document.getElementById('results-count').textContent = `${plants.length}種類を表示`;
     const grid = document.getElementById('plant-grid');
     if (!plants.length) {
-        grid.innerHTML = `<div style="grid-column:1/-1;"><div class="empty-state"><span class="empty-icon">🌱</span><div class="empty-title">見つかりませんでした</div><div class="empty-desc">検索条件を変えてみてください</div><button onclick="resetAll()" style="margin-top:14px;padding:10px 24px;background:var(--primary);color:#fff;border:none;border-radius:var(--radius-full);font-size:0.85rem;font-weight:700;cursor:pointer;">条件をリセットする</button></div></div>`;
+        grid.innerHTML = `<div style="grid-column:1/-1;"><div class="empty-state"><span class="empty-icon">🌱</span><div class="empty-title">見つかりませんでした</div><div class="empty-desc">検索条件を変えてみてください</div><button onclick="resetAll()" style="margin-top:14px;padding:10px 24px;background:var(--primary);color:#fff;border:none;border-radius:var(--radius-full);font-size:0.85rem;font-weight:700;cursor:pointer;">条件をリセットする</button><div style="margin-top:14px;font-size:0.78rem;color:var(--text-muted);margin-bottom:8px;">人気の植物で検索：</div><div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;">${[['🌿 モンステラ','モンステラ'],['🌵 サンスベリア','サンスベリア'],['🍀 ポトス','ポトス'],['🌳 パキラ','パキラ']].map(([label,tag])=>`<button onclick="searchByTag('${tag}')" style="padding:6px 12px;background:var(--primary-light);color:var(--primary);border:1px solid var(--accent);border-radius:var(--radius-full);font-size:0.78rem;font-weight:600;cursor:pointer;">${label}</button>`).join('')}</div></div></div>`;
     } else {
         grid.innerHTML = plants.map(p => plantCard(p, favs)).join('');
     }
@@ -890,7 +939,14 @@ function openModal(id) {
                onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform=''">
                 🛒 ${p.name}をAmazonで探す
             </a>
-            ${(()=>{const related=PLANTS.filter(r=>r.id!==p.id&&r.diff===p.diff).slice(0,3);return related.length?`<div class="related-section"><div class="section-title">同じ難易度のおすすめ植物</div><div class="related-grid">${related.map(r=>`<div class="related-card" onclick="openModal('${r.id}')"><span class="related-card-emoji">${r.emoji}</span><div class="related-card-name">${r.name}</div></div>`).join('')}</div></div>`:'';})()}
+            ${(()=>{const pool=PLANTS.filter(r=>r.id!==p.id&&r.diff===p.diff);for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}const related=pool.slice(0,3);return related.length?`<div class="related-section"><div class="section-title">同じ難易度のおすすめ植物</div><div class="related-grid">${related.map(r=>`<div class="related-card" onclick="openModal('${r.id}')"><span class="related-card-emoji">${r.emoji}</span><div class="related-card-name">${r.name}</div></div>`).join('')}</div></div>`:'';})()}
+            <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border);">
+                <div class="section-title" style="margin-bottom:8px;">この植物をシェア</div>
+                <div style="display:flex;gap:8px;">
+                    <a href="https://line.me/R/msg/text/?${encodeURIComponent('【'+p.name+'の育て方】水やり'+p.water+'・'+p.light+'・難易度:'+p.diff+'｜観葉植物図鑑\nhttps://appadaycreator.com/plant-encyclopedia/')}" target="_blank" rel="noopener" style="flex:1;display:flex;align-items:center;justify-content:center;gap:5px;background:#06C755;color:#fff;padding:10px;border-radius:var(--radius-sm);font-size:0.8rem;font-weight:700;text-decoration:none;">💚 LINEでシェア</a>
+                    <a href="https://twitter.com/intent/tweet?text=${encodeURIComponent('【'+p.name+'の育て方】水やり'+p.water+'・'+p.light+' #観葉植物図鑑')}&url=${encodeURIComponent('https://appadaycreator.com/plant-encyclopedia/')}" target="_blank" rel="noopener" style="flex:1;display:flex;align-items:center;justify-content:center;gap:5px;background:#000;color:#fff;padding:10px;border-radius:var(--radius-sm);font-size:0.8rem;font-weight:700;text-decoration:none;">🐦 Xでシェア</a>
+                </div>
+            </div>
         </div>`;
     mc.scrollTop = 0;
     document.getElementById('modal-overlay').classList.add('open');
@@ -924,7 +980,70 @@ function resetAll() {
         b.classList.remove('active');
         if (!b.dataset.val) b.classList.add('active');
     });
+    updateFilterClearBtn();
     render();
+}
+
+function toggleFilterExtra() {
+    const extra = document.getElementById('filter-bar-extra');
+    const btn = document.getElementById('filter-toggle-btn');
+    if (extra.classList.contains('collapsed')) {
+        extra.classList.remove('collapsed');
+        btn.textContent = '▲ 折りたたむ';
+    } else {
+        extra.classList.add('collapsed');
+        btn.textContent = '▼ もっと絞り込む';
+    }
+}
+
+function updateFilterClearBtn() {
+    const hasActive = filters.diff || filters.light || filters.water || filters.place || filters.safe || document.getElementById('search-input').value;
+    const btn = document.getElementById('filter-clear-btn');
+    if (btn) {
+        if (hasActive) btn.classList.add('visible');
+        else btn.classList.remove('visible');
+    }
+}
+
+function initSeasonalBanner() {
+    const month = new Date().getMonth() + 1;
+    const seasons = {
+        1: { msg: '❄️ 冬の観葉植物ケア：水やりは月1〜2回に減らし、10℃以下の窓際から遠ざけましょう', filter: null, filterType: null },
+        2: { msg: '❄️ 春に向けて準備：植え替えは4〜5月がベスト。今から土と鉢を用意しておきましょう', filter: null, filterType: null },
+        3: { msg: '🌸 春の植え替えシーズン開始！成長期スタートで水やりを増やし液体肥料も解禁', filter: null, filterType: null },
+        4: { msg: '🌱 ゴールデンウィークに植え替えチャレンジ！初心者向けの育てやすい植物を見てみよう', filter: '超簡単', filterType: 'diff' },
+        5: { msg: '🌿 5月は植え替えの最適季節！梅雨前に株を整えよう。ペット安全植物も要チェック', filter: 'safe', filterType: 'safe' },
+        6: { msg: '🌧️ 梅雨入り：過湿・根腐れに注意。水やりを控えて風通し確保が重要な時期', filter: null, filterType: null },
+        7: { msg: '☀️ 夏の葉焼けに注意！直射日光を避け、日陰OKの植物が夏は管理ラク', filter: '日陰OK', filterType: 'light' },
+        8: { msg: '🌞 暑い夏は日陰OKの植物が活躍。エアコンの風が直接当たる場所は避けよう', filter: '日陰OK', filterType: 'light' },
+        9: { msg: '🍂 秋は水やりを徐々に減らすシーズン。冬越しに向けて植物の体力を整えよう', filter: null, filterType: null },
+        10: { msg: '🍁 秋冬向きの観葉植物。耐寒性の強い植物は窓際でも安心', filter: null, filterType: null },
+        11: { msg: '🏠 冬に向けて室内環境を整えよう。暖房の乾燥対策に加湿効果のある植物がおすすめ', filter: null, filterType: null },
+        12: { msg: '🎄 クリスマスシーズン！贈り物に喜ばれる観葉植物をチェック', filter: null, filterType: null },
+    };
+    const s = seasons[month];
+    if (!s) return;
+    const banner = document.getElementById('seasonal-banner');
+    if (!banner) return;
+    const clickHandler = s.filter ? (
+        s.filterType === 'safe'
+            ? `onclick="(function(){filters.safe='safe';document.querySelectorAll('[data-filter=safe]').forEach(b=>{b.classList.remove('active');if(b.dataset.val==='safe')b.classList.add('active');});updateFilterClearBtn();render();})()"`
+            : `onclick="(function(){filters.${s.filterType}='${s.filter}';document.querySelectorAll('[data-filter=${s.filterType}]').forEach(b=>{b.classList.remove('active');if(b.dataset.val==='${s.filter}')b.classList.add('active');});updateFilterClearBtn();render();})()"`
+    ) : '';
+    banner.innerHTML = `<div style="background:linear-gradient(135deg,#e8f5e9,#f0fdf4);border:1px solid var(--accent);border-radius:var(--radius-sm);padding:10px 14px;font-size:0.8rem;color:var(--primary);font-weight:600;display:flex;align-items:center;gap:8px;${s.filter?'cursor:pointer;':''}" ${clickHandler}>${s.msg}${s.filter?'<span style="margin-left:auto;font-size:0.72rem;background:var(--primary);color:#fff;padding:2px 8px;border-radius:var(--radius-full);">絞り込む→</span>':''}</div>`;
+}
+
+function initStatsCards() {
+    const safeCount = PLANTS.filter(p => !p.toxic).length;
+    const easyCount = PLANTS.filter(p => p.diff === '超簡単').length;
+    const flowerCount = PLANTS.filter(p => (p.keywords||[]).some(k => k.includes('花が咲く'))).length;
+    const container = document.getElementById('stats-cards');
+    if (!container) return;
+    container.innerHTML = [
+        { icon: '🐾', label: `ペット安全`, count: safeCount, action: `(function(){filters.safe='safe';document.querySelectorAll('[data-filter=safe]').forEach(b=>{b.classList.remove('active');if(b.dataset.val==='safe')b.classList.add('active');});updateFilterClearBtn();render();})()` },
+        { icon: '🌟', label: `超簡単`, count: easyCount, action: `(function(){filters.diff='超簡単';document.querySelectorAll('[data-filter=diff]').forEach(b=>{b.classList.remove('active');if(b.dataset.val==='超簡単')b.classList.add('active');});updateFilterClearBtn();render();})()` },
+        { icon: '🌸', label: `花が咲く`, count: flowerCount, action: `searchByTag('花が咲く')` },
+    ].map(s => `<div onclick="${s.action}" style="flex:1;min-width:80px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 12px;text-align:center;cursor:pointer;transition:all 0.18s ease-out;box-shadow:var(--shadow-sm);" onmouseover="this.style.borderColor='var(--primary)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''"><div style="font-size:1.2rem;">${s.icon}</div><div style="font-size:1.1rem;font-weight:800;color:var(--primary);">${s.count}</div><div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;">${s.label}</div></div>`).join('');
 }
 
 function searchByTag(tag) {
@@ -935,6 +1054,7 @@ function searchByTag(tag) {
     document.querySelectorAll('.nav-tab')[0].classList.add('active');
     document.getElementById('panel-all').classList.add('active');
     document.getElementById('search-input').value = tag;
+    updateFilterClearBtn();
     render();
     showToast(`"${tag}" で検索中`);
 }
@@ -950,6 +1070,8 @@ window.addEventListener('unhandledrejection',function(e){console.error('[Promise
 
 document.addEventListener('DOMContentLoaded', function(){
     render();
+    initSeasonalBanner();
+    initStatsCards();
 });
 </script>
 
@@ -1029,7 +1151,7 @@ function savepeResult(){
 
 <section style="max-width:800px;margin:0 auto 20px;padding:16px;background:#f0fdf4;border-radius:12px;">
 <h2 style="font-size:0.9rem;font-weight:bold;color:#16a34a;margin-bottom:12px;text-align:center;">🔗 あわせて使いたいサービス</h2>
-<div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;"><a href="https://appadaycreator.com/green-diary-app/" style="background:#fff;border:2px solid #bbf7d0;border-radius:10px;padding:10px 14px;text-decoration:none;text-align:center;min-width:110px;" onmouseover="this.style.borderColor='#16a34a'" onmouseout="this.style.borderColor='#bbf7d0'"><div style="font-size:1.3rem;">🌱</div><div style="font-size:0.75rem;font-weight:bold;color:#374151;margin-top:3px;">植物成長記録</div></a><a href="https://appadaycreator.com/skincare-tracker/" style="background:#fff;border:2px solid #bbf7d0;border-radius:10px;padding:10px 14px;text-decoration:none;text-align:center;min-width:110px;" onmouseover="this.style.borderColor='#16a34a'" onmouseout="this.style.borderColor='#bbf7d0'"><div style="font-size:1.3rem;">🌿</div><div style="font-size:0.75rem;font-weight:bold;color:#374151;margin-top:3px;">スキンケア管理</div></a><a href="https://appadaycreator.com/coffee-note-app/" style="background:#fff;border:2px solid #bbf7d0;border-radius:10px;padding:10px 14px;text-decoration:none;text-align:center;min-width:110px;" onmouseover="this.style.borderColor='#16a34a'" onmouseout="this.style.borderColor='#bbf7d0'"><div style="font-size:1.3rem;">🌻</div><div style="font-size:0.75rem;font-weight:bold;color:#374151;margin-top:3px;">珈琲ノート</div></a><a href="https://appadaycreator.com/ai-meditation-forest/" style="background:#fff;border:2px solid #bbf7d0;border-radius:10px;padding:10px 14px;text-decoration:none;text-align:center;min-width:110px;" onmouseover="this.style.borderColor='#16a34a'" onmouseout="this.style.borderColor='#bbf7d0'"><div style="font-size:1.3rem;">🧘</div><div style="font-size:0.75rem;font-weight:bold;color:#374151;margin-top:3px;">AI瞑想</div></a></div>
+<div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;"><a href="https://appadaycreator.com/green-diary-app/" style="background:#fff;border:2px solid #bbf7d0;border-radius:10px;padding:10px 14px;text-decoration:none;text-align:center;min-width:110px;" onmouseover="this.style.borderColor='#16a34a'" onmouseout="this.style.borderColor='#bbf7d0'"><div style="font-size:1.3rem;">🌱</div><div style="font-size:0.75rem;font-weight:bold;color:#374151;margin-top:3px;">植物成長記録</div></a><a href="https://appadaycreator.com/skincare-tracker/" style="background:#fff;border:2px solid #bbf7d0;border-radius:10px;padding:10px 14px;text-decoration:none;text-align:center;min-width:110px;" onmouseover="this.style.borderColor='#16a34a'" onmouseout="this.style.borderColor='#bbf7d0'"><div style="font-size:1.3rem;">💆</div><div style="font-size:0.75rem;font-weight:bold;color:#374151;margin-top:3px;">スキンケア管理</div></a><a href="https://appadaycreator.com/coffee-note-app/" style="background:#fff;border:2px solid #bbf7d0;border-radius:10px;padding:10px 14px;text-decoration:none;text-align:center;min-width:110px;" onmouseover="this.style.borderColor='#16a34a'" onmouseout="this.style.borderColor='#bbf7d0'"><div style="font-size:1.3rem;">☕</div><div style="font-size:0.75rem;font-weight:bold;color:#374151;margin-top:3px;">珈琲ノート</div></a><a href="https://appadaycreator.com/ai-meditation-forest/" style="background:#fff;border:2px solid #bbf7d0;border-radius:10px;padding:10px 14px;text-decoration:none;text-align:center;min-width:110px;" onmouseover="this.style.borderColor='#16a34a'" onmouseout="this.style.borderColor='#bbf7d0'"><div style="font-size:1.3rem;">🧘</div><div style="font-size:0.75rem;font-weight:bold;color:#374151;margin-top:3px;">AI瞑想</div></a></div>
 </section>
 
     <!-- A3: 広告スロット（フッター直上） -->
