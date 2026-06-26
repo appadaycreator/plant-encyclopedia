@@ -59,18 +59,18 @@ a{text-decoration:none;color:inherit;}
 @media(max-width:768px){.main-nav{display:none;}.header-inner{padding:0 16px;}}
 
 /* ===== HERO ===== */
-.hero-section{position:relative;overflow:hidden;min-height:600px;display:flex;align-items:center;background:linear-gradient(135deg,#f5fbf2 0%,#e8f5e3 45%,#f0f8ec 100%);}
-.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center right;background-image:url('../assets/photos/photo_01.jpg');opacity:0.18;}
-.hero-overlay{display:none;}
-.hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:80px 24px 72px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(45,90,36,0.1);border:1.5px solid rgba(45,90,36,0.25);color:var(--primary);padding:6px 16px;border-radius:40px;font-size:0.78rem;font-weight:800;margin-bottom:22px;letter-spacing:0.04em;}
-.hero-h1{font-size:clamp(2.1rem,4.5vw,3.4rem);font-weight:900;color:var(--primary);line-height:1.2;margin-bottom:22px;letter-spacing:-0.02em;}
-.hero-h1 span{color:var(--accent);}
-.hero-sub{font-size:0.98rem;color:var(--text-sec);margin-bottom:36px;line-height:1.85;}
-.btn-cta-large{font-size:1.08rem;padding:17px 40px;border-radius:50px;box-shadow:0 6px 20px rgba(45,90,36,0.3);margin-bottom:28px;background:var(--primary);}
-.btn-cta-large:hover{background:var(--primary-dark);box-shadow:0 8px 24px rgba(45,90,36,0.4);}
+.hero-section{position:relative;overflow:hidden;min-height:580px;display:flex;align-items:center;}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-image:url('../assets/photos/photo_01.jpg');}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,60,24,0.82) 0%,rgba(45,90,36,0.65) 50%,rgba(30,60,24,0.4) 100%);}
+.hero-inner{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:72px 24px 60px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.95);padding:6px 16px;border-radius:40px;font-size:0.75rem;font-weight:700;margin-bottom:20px;letter-spacing:0.04em;}
+.hero-h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#fff;line-height:1.25;margin-bottom:20px;letter-spacing:-0.02em;}
+.hero-h1 span{color:#9de886;}
+.hero-sub{font-size:0.95rem;color:rgba(255,255,255,0.85);margin-bottom:32px;line-height:1.8;}
+.btn-cta-large{font-size:1.05rem;padding:16px 36px;border-radius:50px;box-shadow:0 6px 20px rgba(0,0,0,0.3);margin-bottom:28px;background:var(--accent);}
+.btn-cta-large:hover{background:#6a9a60;}
 .hero-stats{display:flex;gap:20px;flex-wrap:wrap;}
-.hero-stats span{color:var(--text-sec);font-size:0.85rem;font-weight:700;display:flex;align-items:center;gap:5px;background:#fff;padding:6px 14px;border-radius:20px;border:1px solid var(--border);}
+.hero-stats span{color:rgba(255,255,255,0.9);font-size:0.85rem;font-weight:700;display:flex;align-items:center;gap:5px;}
 /* hero mockup */
 .hero-mockup{background:#fff;border-radius:var(--radius-lg);padding:20px;box-shadow:0 20px 60px rgba(0,0,0,0.3);max-width:380px;margin-left:auto;}
 .mockup-header{font-size:0.75rem;font-weight:800;color:var(--primary);margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--border);}
@@ -85,16 +85,15 @@ a{text-decoration:none;color:inherit;}
 @media(max-width:768px){
   .hero-inner{grid-template-columns:1fr;gap:32px;}
   .hero-mockup{max-width:100%;margin-left:0;}
-  .hero-h1{font-size:2rem;}
-  .hero-section{min-height:auto;}
+  .hero-h1{font-size:1.9rem;}
 }
 
 /* ===== SECTION COMMON ===== */
-.section{padding:72px 24px;}
+.section{padding:64px 24px;}
 .section-inner{max-width:1200px;margin:0 auto;}
-.section-title{font-size:1.65rem;font-weight:900;color:var(--text);text-align:center;margin-bottom:10px;}
-.section-sub{text-align:center;color:var(--text-sec);font-size:0.92rem;margin-bottom:40px;}
-.section-title-line{width:52px;height:4px;background:var(--accent);border-radius:2px;margin:14px auto 36px;}
+.section-title{font-size:1.5rem;font-weight:900;color:var(--text);text-align:center;margin-bottom:8px;}
+.section-sub{text-align:center;color:var(--text-sec);font-size:0.9rem;margin-bottom:40px;}
+.section-title-line{width:48px;height:4px;background:var(--accent);border-radius:2px;margin:12px auto 32px;}
 
 /* ===== FEATURES ===== */
 .features-section{background:#fff;}
@@ -116,20 +115,6 @@ a{text-decoration:none;color:inherit;}
 .step-card h3{font-size:0.95rem;font-weight:800;color:var(--primary);margin-bottom:8px;}
 .step-card p{font-size:0.82rem;color:var(--text-sec);line-height:1.7;}
 @media(max-width:640px){.steps-grid{grid-template-columns:1fr;gap:24px;}.steps-grid::before{display:none;}}
-
-/* ===== COMPARISON TABLE ===== */
-.compare-section{background:var(--bg);}
-.compare-table{width:100%;border-collapse:separate;border-spacing:0;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);background:#fff;margin-top:8px;}
-.compare-table th{padding:14px 20px;font-size:0.82rem;font-weight:800;text-align:center;}
-.compare-table th:first-child{text-align:left;background:#fff;color:var(--text-muted);}
-.compare-table th.highlight{background:var(--primary);color:#fff;}
-.compare-table th.plain{background:#f1f5f1;color:var(--text-sec);}
-.compare-table td{padding:13px 20px;font-size:0.83rem;text-align:center;border-top:1px solid var(--border);}
-.compare-table td:first-child{text-align:left;font-weight:700;color:var(--text);}
-.compare-table td.ok{color:#22c55e;font-weight:800;font-size:1rem;}
-.compare-table td.ng{color:#9ca3af;font-size:1rem;}
-.compare-table td.highlight-col{background:#f5fbf2;}
-@media(max-width:640px){.compare-table th,.compare-table td{padding:10px 12px;font-size:0.78rem;}}
 
 /* ===== RICH FEATURES ===== */
 .rich-section{background:#fff;}
@@ -272,10 +257,6 @@ a{text-decoration:none;color:inherit;}
         <span>⭐ 4.8/5.0</span>
         <span>🌿 44種 収録</span>
       </div>
-      <div style="margin-top:20px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-        <span style="display:inline-flex;align-items:center;gap:5px;background:#fff;border:1.5px solid rgba(45,90,36,0.3);color:var(--primary);padding:6px 14px;border-radius:20px;font-size:0.75rem;font-weight:800;box-shadow:0 2px 6px rgba(45,90,36,0.1);">🌱 植物専門家 監修</span>
-        <span style="display:inline-flex;align-items:center;gap:5px;background:#fff;border:1.5px solid rgba(45,90,36,0.2);color:var(--text-sec);padding:6px 14px;border-radius:20px;font-size:0.75rem;font-weight:700;">✅ 完全無料・登録不要</span>
-      </div>
     </div>
     <div class="hero-right">
       <div class="hero-mockup">
@@ -376,59 +357,6 @@ a{text-decoration:none;color:inherit;}
         <h3>Step3 &mdash; 育て方を読んで即スタート</h3>
         <p>選んだ植物の育て方・水やりのコツ・病害虫対策をすぐ確認。PDFで保存も可能</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== COMPARISON TABLE ===== -->
-<section class="section compare-section">
-  <div class="section-inner">
-    <h2 class="section-title">他のサービスと比べてみる</h2>
-    <p class="section-sub">「なんとなく買う」より、条件で探すから失敗しない</p>
-    <div class="section-title-line"></div>
-    <div style="overflow-x:auto;">
-      <table class="compare-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th class="highlight">🌿 観葉植物図鑑<br>（本サービス）</th>
-            <th class="plain">Google検索</th>
-            <th class="plain">園芸店スタッフ</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>初心者向け難易度フィルター</td>
-            <td class="ok highlight-col">✓</td>
-            <td class="ng">—</td>
-            <td class="ng">△</td>
-          </tr>
-          <tr>
-            <td>ペット安全性で絞り込み</td>
-            <td class="ok highlight-col">✓</td>
-            <td class="ng">—</td>
-            <td class="ng">△</td>
-          </tr>
-          <tr>
-            <td>44種の詳細な育て方情報</td>
-            <td class="ok highlight-col">✓</td>
-            <td class="ng">△</td>
-            <td class="ok">✓</td>
-          </tr>
-          <tr>
-            <td>完全無料・登録不要</td>
-            <td class="ok highlight-col">✓</td>
-            <td class="ok">✓</td>
-            <td class="ng">—</td>
-          </tr>
-          <tr>
-            <td>スマホから3分で完結</td>
-            <td class="ok highlight-col">✓</td>
-            <td class="ng">—</td>
-            <td class="ng">—</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </div>
 </section>
