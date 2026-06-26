@@ -136,6 +136,7 @@ a{text-decoration:none;color:inherit;}
 /* ===== POPULAR PLANTS ===== */
 .plants-section{background:var(--bg);}
 .plants-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media(min-width:1024px){.plants-grid{grid-template-columns:repeat(4,1fr);}}
 .plant-card-lp{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);border:1px solid var(--border);transition:all 0.2s;}
 .plant-card-lp:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
 .plant-card-lp-img{aspect-ratio:4/3;overflow:hidden;position:relative;}
@@ -260,14 +261,31 @@ a{text-decoration:none;color:inherit;}
     <div class="hero-right">
       <div class="hero-mockup">
         <div class="mockup-header">
-          <span style="font-size:0.72rem;font-weight:800;color:var(--primary);">🌿 観葉植物を検索</span>
+          <span style="font-size:0.72rem;font-weight:800;color:var(--primary);">🌿 絞り込んで探す</span>
         </div>
-        <div class="mockup-search">🔍 植物名・条件で検索...</div>
-        <div class="mockup-chips">
-          <span class="mockup-chip active">すべて</span>
-          <span class="mockup-chip">初心者向け</span>
-          <span class="mockup-chip">日陰OK</span>
-          <span class="mockup-chip">ペット安全</span>
+        <div class="mockup-search">🔍 植物名・特徴で検索（例：日陰、初心者）</div>
+        <div style="margin-bottom:8px;">
+          <div style="font-size:0.62rem;font-weight:700;color:#8ba882;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px;">難易度</div>
+          <div class="mockup-chips">
+            <span class="mockup-chip active">超簡単</span>
+            <span class="mockup-chip">初心者向け</span>
+            <span class="mockup-chip">中級</span>
+            <span class="mockup-chip">上級</span>
+          </div>
+        </div>
+        <div style="margin-bottom:8px;">
+          <div style="font-size:0.62rem;font-weight:700;color:#8ba882;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px;">日当たり</div>
+          <div class="mockup-chips">
+            <span class="mockup-chip">日陰OK</span>
+            <span class="mockup-chip active">明るい日陰</span>
+            <span class="mockup-chip">日当たり</span>
+          </div>
+        </div>
+        <div style="margin-bottom:10px;">
+          <div style="font-size:0.62rem;font-weight:700;color:#8ba882;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px;">ペット安全</div>
+          <div class="mockup-chips">
+            <span class="mockup-chip">ペット安全のみ</span>
+          </div>
         </div>
         <div class="mockup-grid">
           <div class="mockup-card">
@@ -493,6 +511,81 @@ a{text-decoration:none;color:inherit;}
           <div class="plant-card-lp-latin">Cissus rhombifolia</div>
           <div class="plant-card-lp-stats">
             <span class="plant-stat">💧 週1〜2回</span>
+            <span class="plant-stat">🌤️ 明るい日陰</span>
+          </div>
+          <a href="../" class="plant-card-lp-action">育て方を見る</a>
+        </div>
+      </div>
+      <div class="plant-card-lp">
+        <div class="plant-card-lp-img">
+          <img src="../assets/photos/photo_12.jpg" alt="ガジュマル">
+          <span class="plant-diff-badge" style="background:rgba(90,143,74,0.9);">初心者</span>
+        </div>
+        <div class="plant-card-lp-body">
+          <div class="plant-card-lp-name">ガジュマル</div>
+          <div class="plant-card-lp-latin">Ficus microcarpa</div>
+          <div class="plant-card-lp-stats">
+            <span class="plant-stat">💧 週1〜2回</span>
+            <span class="plant-stat">☀️ 日当たり</span>
+          </div>
+          <a href="../" class="plant-card-lp-action">育て方を見る</a>
+        </div>
+      </div>
+      <div class="plant-card-lp">
+        <div class="plant-card-lp-img">
+          <img src="../assets/photos/photo_13.jpg" alt="ドラセナ">
+          <span class="plant-diff-badge" style="background:rgba(90,143,74,0.9);">初心者</span>
+        </div>
+        <div class="plant-card-lp-body">
+          <div class="plant-card-lp-name">ドラセナ</div>
+          <div class="plant-card-lp-latin">Dracaena</div>
+          <div class="plant-card-lp-stats">
+            <span class="plant-stat">💧 週1回</span>
+            <span class="plant-stat">🌤️ 明るい日陰</span>
+          </div>
+          <a href="../" class="plant-card-lp-action">育て方を見る</a>
+        </div>
+      </div>
+      <div class="plant-card-lp">
+        <div class="plant-card-lp-img">
+          <img src="../assets/photos/photo_15.jpg" alt="アロエベラ">
+          <span class="plant-diff-badge">超簡単</span>
+        </div>
+        <div class="plant-card-lp-body">
+          <div class="plant-card-lp-name">アロエベラ</div>
+          <div class="plant-card-lp-latin">Aloe vera</div>
+          <div class="plant-card-lp-stats">
+            <span class="plant-stat">💧 月2〜3回</span>
+            <span class="plant-stat">☀️ 日当たり</span>
+          </div>
+          <a href="../" class="plant-card-lp-action">育て方を見る</a>
+        </div>
+      </div>
+      <div class="plant-card-lp">
+        <div class="plant-card-lp-img">
+          <img src="../assets/photos/photo_17.jpg" alt="アレカヤシ">
+          <span class="plant-diff-badge" style="background:rgba(90,143,74,0.9);">初心者</span>
+        </div>
+        <div class="plant-card-lp-body">
+          <div class="plant-card-lp-name">アレカヤシ</div>
+          <div class="plant-card-lp-latin">Dypsis lutescens</div>
+          <div class="plant-card-lp-stats">
+            <span class="plant-stat">💧 週2回</span>
+            <span class="plant-stat">🌤️ 明るい日陰</span>
+          </div>
+          <a href="../" class="plant-card-lp-action">育て方を見る</a>
+        </div>
+      </div>
+      <div class="plant-card-lp">
+        <div class="plant-card-lp-img">
+          <img src="../assets/photos/photo_21.jpg" alt="ペペロミア">
+          <span class="plant-diff-badge" style="background:rgba(90,143,74,0.9);">初心者</span>
+        </div>
+        <div class="plant-card-lp-body">
+          <div class="plant-card-lp-name">ペペロミア</div>
+          <div class="plant-card-lp-latin">Peperomia</div>
+          <div class="plant-card-lp-stats">
+            <span class="plant-stat">💧 週1回</span>
             <span class="plant-stat">🌤️ 明るい日陰</span>
           </div>
           <a href="../" class="plant-card-lp-action">育て方を見る</a>
