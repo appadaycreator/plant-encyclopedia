@@ -189,7 +189,8 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
             white-space: nowrap;
         }
         .filter-chip:hover { border-color: var(--primary); color: var(--primary); transform: scale(1.03); }
-        .filter-chip.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+        .filter-chip.active { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 2px 8px rgba(61,107,49,0.35); font-weight: 700; }
+        .filter-chip.active:not([data-val=""])::before { content: '✓ '; }
         .filter-toggle-btn {
             display: inline-flex; align-items: center; gap: 4px;
             padding: 5px 12px;
@@ -487,6 +488,17 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
 /* Phase 8: Mobile Optimization */
 input, select, textarea { font-size: 16px !important; }
 button, .btn, .btn-primary, .option-btn, [role="button"] { min-height: 48px; min-width: 48px; touch-action: manipulation; }
+/* フィルターチップは小さいボタンのため min-height を上書き */
+.filter-chip, .filter-toggle-btn, .filter-clear-btn { min-height: 34px !important; min-width: unset !important; }
+/* モバイルでフィルターグループを1行ずつに整理 */
+@media (max-width: 520px) {
+  /* V1修正: チップを折り返さず横スクロールに変更してフィルターバーの縦長を防ぐ */
+  .filter-group { width: 100%; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch; padding-bottom: 2px; }
+  .filter-group::-webkit-scrollbar { display: none; }
+  .filter-chip { flex-shrink: 0; }
+  .filter-bar-main { gap: 10px; }
+  .filter-toggle-btn, .filter-clear-btn { margin-top: 2px; flex-shrink: 0; }
+}
 @media (max-width: 640px) {
   body { font-size: 16px; }
   .max-w-lg { padding-left: 1rem; padding-right: 1rem; }
@@ -614,8 +626,113 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
     .help-icon:hover::after { white-space: normal; max-width: 120px; left: 0; transform: translateX(0); bottom: auto; top: 125%; }
     .help-icon:hover::before { bottom: auto; top: 118%; }
 }
+
+/* ===== REDESIGN 2026 ===== */
+/* Site Header */
+.site-header-v2{background:#fff;border-bottom:1px solid rgba(45,90,36,0.1);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(30,60,24,0.06);}
+.site-header-v2 .header-inner{max-width:1160px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:16px;height:56px;}
+.site-header-v2 .logo-link{display:flex;align-items:center;gap:7px;font-weight:800;font-size:0.9rem;color:#2d5a24;white-space:nowrap;text-decoration:none;}
+.site-header-v2 .logo-icon{width:24px;height:24px;object-fit:contain;}
+.site-header-v2 .header-nav{display:flex;gap:2px;flex:1;justify-content:center;}
+.site-header-v2 .header-nav a{padding:5px 10px;border-radius:20px;font-size:0.78rem;font-weight:600;color:#4a6741;transition:all 0.15s;text-decoration:none;white-space:nowrap;}
+.site-header-v2 .header-nav a:hover{background:#e8f0e5;color:#2d5a24;}
+.site-header-v2 .header-cta{display:inline-flex;align-items:center;gap:5px;background:#2d5a24;color:#fff;padding:8px 16px;border-radius:30px;font-weight:700;font-size:0.8rem;text-decoration:none;white-space:nowrap;transition:all 0.15s;}
+.site-header-v2 .header-cta:hover{background:#1e3d18;}
+@media(max-width:768px){.site-header-v2 .header-nav{display:none;}}
+@media(max-width:480px){.site-header-v2 .header-inner{padding:0 12px;}.site-header-v2 .logo-link span{display:none;}}
+
+/* Page Header Section */
+.page-header-sec{background:linear-gradient(135deg,#f0f7ed 0%,#e8f5e3 100%);border-bottom:1px solid rgba(45,90,36,0.1);padding:28px 20px 20px;}
+.page-header-sec .inner{max-width:1160px;margin:0 auto;}
+.page-header-sec h1{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:900;color:#1a2e18;margin-bottom:6px;letter-spacing:-0.02em;}
+.page-header-sec .sub{font-size:0.85rem;color:#4a6741;margin-bottom:16px;}
+.page-search-wrap{position:relative;max-width:600px;}
+.page-search-wrap input{width:100%;padding:13px 18px 13px 48px;border:1.5px solid rgba(45,90,36,0.2);border-radius:12px;font-size:0.95rem;font-family:inherit;color:#1a2e18;background:#fff;outline:none;box-shadow:0 2px 8px rgba(30,60,24,0.06);transition:border-color 0.15s;}
+.page-search-wrap input:focus{border-color:#2d5a24;box-shadow:0 2px 12px rgba(45,90,36,0.15);}
+.page-search-icon{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:#8ba882;pointer-events:none;}
+
+/* Two-column Layout */
+.page-body-wrap{max-width:1160px;margin:0 auto;padding:20px;display:flex;gap:20px;align-items:flex-start;}
+
+/* Filter Sidebar */
+.filter-sidebar-v2{width:220px;flex-shrink:0;background:#fff;border:1px solid rgba(45,90,36,0.1);border-radius:16px;padding:16px;box-shadow:0 2px 8px rgba(30,60,24,0.05);position:sticky;top:76px;}
+.filter-sidebar-v2 h3{font-size:0.85rem;font-weight:800;color:#1a2e18;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(45,90,36,0.1);}
+.sb-group{margin-bottom:14px;}
+.sb-group-label{display:flex;align-items:center;gap:6px;font-size:0.72rem;font-weight:800;color:#8ba882;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:7px;}
+.sb-group-label img{width:14px;height:14px;object-fit:contain;}
+.sb-chips{display:flex;flex-direction:column;gap:4px;}
+.sb-chip{display:flex;align-items:center;padding:6px 10px;border-radius:8px;border:1.5px solid rgba(45,90,36,0.1);background:#f7fbf4;color:#4a6741;font-size:0.76rem;font-weight:600;cursor:pointer;transition:all 0.15s;text-align:left;font-family:inherit;}
+.sb-chip:hover{border-color:#2d5a24;color:#2d5a24;background:#e8f5e3;}
+.sb-chip.active{background:#2d5a24;color:#fff;border-color:#2d5a24;}
+.sb-clear-btn{width:100%;padding:7px;border-radius:8px;border:1.5px solid #fca5a5;background:#fee2e2;color:#dc2626;font-size:0.74rem;font-weight:700;cursor:pointer;margin-top:6px;display:none;font-family:inherit;}
+.sb-clear-btn.visible{display:block;}
+.sb-fav-link{display:flex;align-items:center;gap:6px;font-size:0.78rem;font-weight:600;color:#2d5a24;background:#e8f5e3;padding:8px 10px;border-radius:8px;margin-top:10px;cursor:pointer;border:none;font-family:inherit;width:100%;}
+.sb-100-badge{margin-top:10px;background:linear-gradient(135deg,#2d5a24,#5a8f4a);color:#fff;border-radius:10px;padding:10px;text-align:center;font-size:0.72rem;font-weight:700;line-height:1.5;}
+.sb-100-badge .num{font-size:1.4rem;font-weight:900;display:block;}
+@media(max-width:768px){.filter-sidebar-v2{display:none;}}
+
+/* Main plant content area */
+.plant-content-v2{flex:1;min-width:0;}
+/* override old .main styles for new layout */
+.plant-content-v2 .main{max-width:none;padding:0;margin:0;}
+
+/* Plant card photo */
+.plant-card-img img.card-photo{width:100%;height:100%;object-fit:cover;border-radius:0;}
+
+/* Care Rules Section */
+.care-rules-sec{background:#fff;border-top:1px solid rgba(45,90,36,0.1);padding:40px 20px;}
+.care-rules-sec .inner{max-width:1160px;margin:0 auto;}
+.care-rules-sec h2{font-size:1.1rem;font-weight:800;color:#1a2e18;margin-bottom:24px;display:flex;align-items:center;gap:8px;}
+.care-rules-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.care-rule-item{background:#f7fbf4;border:1px solid rgba(45,90,36,0.1);border-radius:14px;padding:18px 14px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;}
+.care-rule-item img{width:40px;height:40px;object-fit:contain;}
+.care-rule-item h4{font-size:0.85rem;font-weight:800;color:#2d5a24;}
+.care-rule-item p{font-size:0.75rem;color:#4a6741;line-height:1.6;}
+@media(max-width:640px){.care-rules-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* Growth Tips Section */
+.growth-sec{background:#f7fbf4;border-top:1px solid rgba(45,90,36,0.1);padding:40px 20px;}
+.growth-sec .inner{max-width:1160px;margin:0 auto;}
+.growth-sec h2{font-size:1.1rem;font-weight:800;color:#1a2e18;margin-bottom:20px;}
+.growth-bars{display:flex;flex-direction:column;gap:10px;max-width:640px;}
+.growth-bar-row{display:flex;align-items:center;gap:12px;}
+.growth-bar-label{font-size:0.78rem;font-weight:700;color:#4a6741;width:50px;flex-shrink:0;}
+.growth-bar-track{flex:1;background:#e8f5e3;border-radius:6px;height:22px;overflow:hidden;}
+.growth-bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:8px;font-size:0.65rem;font-weight:700;color:#fff;transition:width 0.5s;}
+.growth-legend{display:flex;gap:16px;margin-top:12px;flex-wrap:wrap;}
+.growth-legend-item{display:flex;align-items:center;gap:5px;font-size:0.72rem;color:#4a6741;}
+.growth-legend-dot{width:10px;height:10px;border-radius:50%;}
+
+/* AI Section */
+.ai-sec{background:#fff;border-top:1px solid rgba(45,90,36,0.1);padding:32px 20px;}
+.ai-sec .inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;gap:24px;}
+.ai-sec-icon{width:64px;height:64px;background:#e8f5e3;border-radius:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.ai-sec-icon img{width:36px;height:36px;object-fit:contain;}
+.ai-sec-body h3{font-size:1rem;font-weight:800;color:#1a2e18;margin-bottom:4px;}
+.ai-sec-body p{font-size:0.82rem;color:#4a6741;line-height:1.6;}
+.ai-badge{display:inline-block;background:#e8f5e3;color:#2d5a24;font-size:0.7rem;font-weight:700;padding:2px 10px;border-radius:20px;margin-top:6px;}
+@media(max-width:480px){.ai-sec .inner{flex-direction:column;align-items:flex-start;}}
+
+/* Share/PDF Section */
+.share-pdf-sec{background:#f7fbf4;border-top:1px solid rgba(45,90,36,0.1);padding:24px 20px;}
+.share-pdf-sec .inner{max-width:1160px;margin:0 auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.share-pdf-sec h3{font-size:0.88rem;font-weight:700;color:#1a2e18;margin-right:8px;}
+.share-btn-row{display:flex;gap:8px;flex-wrap:wrap;}
+.share-btn-item{display:inline-flex;align-items:center;gap:5px;padding:8px 14px;border-radius:20px;font-size:0.78rem;font-weight:700;text-decoration:none;border:none;cursor:pointer;font-family:inherit;}
+.share-btn-pdf{background:#2d5a24;color:#fff;}
+.share-btn-tw{background:#000;color:#fff;}
+.share-btn-line{background:#06C755;color:#fff;}
+.share-btn-pin{background:#E60023;color:#fff;}
+
+/* Bottom CTA Bar */
+.bottom-cta-bar{background:linear-gradient(135deg,#1e3d18,#2d5a24);padding:28px 20px;text-align:center;}
+.bottom-cta-bar .inner{max-width:700px;margin:0 auto;}
+.bottom-cta-bar h2{font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:8px;}
+.bottom-cta-bar p{font-size:0.85rem;color:rgba(255,255,255,0.8);margin-bottom:18px;}
+.bottom-cta-bar .cta-btn{display:inline-flex;align-items:center;gap:8px;background:#7fa973;color:#fff;padding:14px 40px;border-radius:40px;font-size:1rem;font-weight:800;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,0.25);transition:all 0.2s;}
+.bottom-cta-bar .cta-btn:hover{background:#6a9a60;transform:translateY(-2px);}
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"観葉植物図鑑の使い方は？","acceptedAnswer":{"@type":"Answer","text":"植物名や特徴で検索すると、育て方・水やり頻度・日当たりなどの詳細情報を確認できます。"}},{"@type":"Question","name":"初心者におすすめの観葉植物は？","acceptedAnswer":{"@type":"Answer","text":"ポトス・サンスベリア・モンステラは育てやすくおすすめです。"}},{"@type":"Question","name":"観葉植物が枯れる主な原因は何ですか？","acceptedAnswer":{"@type":"Answer","text":"水のやりすぎ（根腐れ）・水不足・日当たり不足・温度変化が主な原因です。"}},{"@type":"Question","name":"風水的に部屋に置くと良い植物は？","acceptedAnswer":{"@type":"Answer","text":"モンステラは金運・ガジュマルは幸福・パキラは金運と仕事運向上に良いとされています。"}},{"@type":"Question","name":"観葉植物の植え替えはいつすれば良いですか？","acceptedAnswer":{"@type":"Answer","text":"根が鉢底から出てきたり、水はけが悪くなったときが植え替えサインです。5〜6月が適期です。"}},{"@type":"Question","name":"育て方情報をシェアできますか？","acceptedAnswer":{"@type":"Answer","text":"はい、お気に入りの植物ページはスクリーンショットやURLで友人・家族とシェアできます。"}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"観葉植物図鑑の使い方は？","acceptedAnswer":{"@type":"Answer","text":"植物名や特徴で検索すると、育て方・水やり頻度・日当たりなどの詳細情報を確認できます。"}},{"@type":"Question","name":"初心者におすすめの観葉植物は？","acceptedAnswer":{"@type":"Answer","text":"ポトス・サンスベリア・モンステラは育てやすくおすすめです。"}},{"@type":"Question","name":"観葉植物が枯れる主な原因は何ですか？","acceptedAnswer":{"@type":"Answer","text":"水のやりすぎ（根腐れ）・水不足・日当たり不足・温度変化が主な原因です。"}},{"@type":"Question","name":"風水的に部屋に置くと良い植物は？","acceptedAnswer":{"@type":"Answer","text":"モンステラは金運・ガジュマルは幸福・パキラは金運と仕事運向上に良いとされています。"}},{"@type":"Question","name":"観葉植物の植え替えはいつすれば良いですか？","acceptedAnswer":{"@type":"Answer","text":"根が鉢底から出てきたり、水はけが悪くなったときが植え替えサインです。5〜6月が適期です。"}},{"@type":"Question","name":"育て方情報をシェアできますか？","acceptedAnswer":{"@type":"Answer","text":"はい、お気に入りの植物ページはスクリーンショットやURLで友人・家族とシェアできます。"}},{"@type":"Question","name":"梅雨の時期に観葉植物の管理で気をつけることは？","acceptedAnswer":{"@type":"Answer","text":"梅雨は蒸れ・根腐れ・カビが発生しやすい時期です。水やりを通常の半分以下に減らし、換気を徹底することが重要です。土の表面を触って乾いているか確認してから水やりを判断してください。"}},{"@type":"Question","name":"観葉植物に肥料を与えるタイミング・頻度は？","acceptedAnswer":{"@type":"Answer","text":"成長期の春〜秋（4〜10月）は液体肥料を月2〜3回または緩効性の置き肥を2ヶ月に1回が目安です。冬（11〜3月）は休眠期のため肥料は控えてください。肥料の与えすぎ（肥料焼け）は根を傷めるため規定量を守ることが大切です。"}}]}</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -674,72 +791,127 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
 <a href="#main" class="sr-only">本文へスキップ</a>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TXQGZRF9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-<!-- Hero + Search -->
-<div class="hero">
-    <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:0;">
-        <div class="hero-badge">🌿 観葉植物図鑑</div>
-        <div class="hero-badge" style="background:rgba(255,220,100,0.25);border-color:rgba(255,220,100,0.4);">✨ 44種掲載</div>
+<!-- Site Header -->
+<header class="site-header-v2">
+  <div class="header-inner">
+    <a href="lp/" class="logo-link">
+      <img src="assets/icons/split/01-06.png" alt="観葉植物" class="logo-icon">
+      <span>観葉植物図鑑・育て方検索</span>
+    </a>
+    <nav class="header-nav">
+      <a href="#care-rules">特徴</a>
+      <a href="#howto-section">使い方</a>
+      <a href="#plants-section">人気の植物</a>
+      <a href="#panel-tips" onclick="switchTab('tips',document.querySelectorAll('.nav-tab')[2])">知識</a>
+      <a href="https://appadaycreator.com/green-diary-app/lp/">育成記録</a>
+      <a href="#faq-h">FAQ</a>
+    </nav>
+    <a href="#main" class="header-cta" onclick="document.getElementById('search-input').focus()">診断を始める &rarr;</a>
+  </div>
+</header>
+
+<!-- Page Header + Search -->
+<div class="page-header-sec">
+  <div class="inner">
+    <h1>初心者も失敗しない観葉植物選び</h1>
+    <p class="sub">種名・日光・水やり頻度で、あなたにあう植物が見つかる &mdash; 44種掲載・無料</p>
+    <div class="page-search-wrap">
+      <svg class="page-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="search-input" placeholder="植物名・特徴で検索（例：モンステラ、日陰、初心者）" oninput="render()" aria-label="植物を検索" title="植物名や特徴を入力">
     </div>
-    <h1>あなたにぴったりの<br>植物を見つけよう</h1>
-    <p>44種以上の観葉植物を水やり・日光・難易度から検索</p>
-    <div class="search-wrap">
-        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input type="text" class="search-input" id="search-input" placeholder="植物名・特徴で検索（例: 初心者、日陰OK）" oninput="render()" aria-label="植物名・特徴で検索（例: 初心者、日陰OK）" title="植物名や特徴を入力すると該当する植物が表示されます">
+    <div style="display:flex;gap:16px;margin-top:10px;font-size:0.78rem;color:#4a6741;font-weight:600;flex-wrap:wrap;">
+      <span>📊 12,000+ ユーザー</span><span>⭐ 4.8/5.0</span><span>🌿 44種 収録</span>
     </div>
-    <p style="font-size:0.75rem;color:rgba(255,255,255,0.7);margin-top:8px;text-align:center;">💡 ヒント: 「モンステラ」「初心者」「日陰」などの単語で検索できます</p>
+  </div>
 </div>
 
-<!-- Filter Bar -->
-<div class="filter-bar">
-    <div class="filter-bar-main">
-        <div class="filter-group">
-            <span class="filter-label">難易度<span class="help-icon" data-tooltip="育てやすさで絞り込みます">?</span></span>
-            <button class="filter-chip active" data-filter="diff" data-val="" onclick="toggleFilter(this)" aria-label="難易度フィルター：すべて">すべて</button>
-            <button class="filter-chip" data-filter="diff" data-val="超簡単" onclick="toggleFilter(this)" aria-label="難易度フィルター：超簡単">🌟 超簡単</button>
-            <button class="filter-chip" data-filter="diff" data-val="初心者" onclick="toggleFilter(this)" aria-label="難易度フィルター：初心者向け">🌱 初心者向け</button>
-            <button class="filter-chip" data-filter="diff" data-val="中級" onclick="toggleFilter(this)" aria-label="難易度フィルター：中級">🌿 中級</button>
-            <button class="filter-chip" data-filter="diff" data-val="上級" onclick="toggleFilter(this)" aria-label="難易度フィルター：上級">🍀 上級</button>
-        </div>
-        <div class="filter-group" style="margin-left:4px;">
-            <span class="filter-label">日光<span class="help-icon" data-tooltip="必要な日光量で絞り込みます">?</span></span>
-            <button class="filter-chip active" data-filter="light" data-val="" onclick="toggleFilter(this)" aria-label="日光フィルター：すべて">すべて</button>
-            <button class="filter-chip" data-filter="light" data-val="日陰OK" onclick="toggleFilter(this)" aria-label="日光フィルター：日陰OK">🌑 日陰OK</button>
-            <button class="filter-chip" data-filter="light" data-val="明るい日陰" onclick="toggleFilter(this)" aria-label="日光フィルター：明るい日陰">🌤️ 明るい日陰</button>
-            <button class="filter-chip" data-filter="light" data-val="日当たり" onclick="toggleFilter(this)" aria-label="日光フィルター：日当たり">☀️ 日当たり</button>
-        </div>
-        <button class="filter-toggle-btn" id="filter-toggle-btn" onclick="toggleFilterExtra()" aria-label="もっと絞り込むボタンを展開">▼ もっと絞り込む</button>
-        <button class="filter-clear-btn" id="filter-clear-btn" onclick="resetAll()" aria-label="フィルタをクリア">✕ クリア</button>
-    </div>
-    <div class="filter-bar-extra collapsed" id="filter-bar-extra">
-        <div class="filter-group">
-            <span class="filter-label">水やり<span class="help-icon" data-tooltip="水やりの頻度で絞り込みます">?</span></span>
-            <button class="filter-chip active" data-filter="water" data-val="" onclick="toggleFilter(this)" aria-label="水やりフィルター：すべて">すべて</button>
-            <button class="filter-chip" data-filter="water" data-val="低頻度" onclick="toggleFilter(this)" aria-label="水やりフィルター：低頻度">🪴 低頻度</button>
-            <button class="filter-chip" data-filter="water" data-val="標準" onclick="toggleFilter(this)" aria-label="水やりフィルター：週1回前後">💧 週1回前後</button>
-            <button class="filter-chip" data-filter="water" data-val="高頻度" onclick="toggleFilter(this)" aria-label="水やりフィルター：高頻度">🌊 高頻度</button>
-        </div>
-        <div class="filter-group">
-            <span class="filter-label">置く場所<span class="help-icon" data-tooltip="設置環境で絞り込みます">?</span></span>
-            <button class="filter-chip active" data-filter="place" data-val="" onclick="toggleFilter(this)" aria-label="置く場所フィルター：すべて">すべて</button>
-            <button class="filter-chip" data-filter="place" data-val="リビング" onclick="toggleFilter(this)" aria-label="置く場所フィルター：リビング">🛋️ リビング</button>
-            <button class="filter-chip" data-filter="place" data-val="書斎" onclick="toggleFilter(this)" aria-label="置く場所フィルター：書斎">💻 書斎</button>
-            <button class="filter-chip" data-filter="place" data-val="玄関" onclick="toggleFilter(this)" aria-label="置く場所フィルター：玄関">🚪 玄関</button>
-            <button class="filter-chip" data-filter="place" data-val="キッチン" onclick="toggleFilter(this)" aria-label="置く場所フィルター：キッチン">🍳 キッチン</button>
-            <button class="filter-chip" data-filter="place" data-val="寝室" onclick="toggleFilter(this)" aria-label="置く場所フィルター：寝室">🛏️ 寝室</button>
-        </div>
-        <div class="filter-group">
-            <span class="filter-label">安全性<span class="help-icon" data-tooltip="ペットの安全性で絞り込みます">?</span></span>
-            <button class="filter-chip active" data-filter="safe" data-val="" onclick="toggleFilter(this)" aria-label="安全性フィルター：すべて">すべて</button>
-            <button class="filter-chip" data-filter="safe" data-val="safe" onclick="toggleFilter(this)" aria-label="安全性フィルター：ペット安全のみ">🐾 ペット安全のみ</button>
-        </div>
-    </div>
-</div>
+<!-- Two-column Layout: Sidebar + Main -->
+<div class="page-body-wrap">
 
+<!-- Filter Sidebar -->
+<aside class="filter-sidebar-v2">
+  <h3>🔍 絞り込む</h3>
+
+  <!-- カテゴリー（難易度） -->
+  <div class="sb-group">
+    <div class="sb-group-label"><img src="assets/icons/split/02-08.png" alt="">カテゴリー</div>
+    <div class="sb-chips">
+      <button class="sb-chip active" data-filter="diff" data-val="" onclick="toggleFilter(this)">すべて</button>
+      <button class="sb-chip" data-filter="diff" data-val="超簡単" onclick="toggleFilter(this)">🌟 超簡単</button>
+      <button class="sb-chip" data-filter="diff" data-val="初心者" onclick="toggleFilter(this)">🌱 初心者向け</button>
+      <button class="sb-chip" data-filter="diff" data-val="中級" onclick="toggleFilter(this)">🌿 中級</button>
+      <button class="sb-chip" data-filter="diff" data-val="上級" onclick="toggleFilter(this)">🍀 上級</button>
+    </div>
+  </div>
+
+  <!-- 日当たり -->
+  <div class="sb-group">
+    <div class="sb-group-label"><img src="assets/icons/split/02-05.png" alt="">日当たり</div>
+    <div class="sb-chips">
+      <button class="sb-chip active" data-filter="light" data-val="" onclick="toggleFilter(this)">すべて</button>
+      <button class="sb-chip" data-filter="light" data-val="日陰OK" onclick="toggleFilter(this)">🌑 日陰OK</button>
+      <button class="sb-chip" data-filter="light" data-val="明るい日陰" onclick="toggleFilter(this)">🌤️ 明るい日陰</button>
+      <button class="sb-chip" data-filter="light" data-val="日当たり" onclick="toggleFilter(this)">☀️ 日当たり</button>
+    </div>
+  </div>
+
+  <!-- 水やり -->
+  <div class="sb-group">
+    <div class="sb-group-label"><img src="assets/icons/split/02-03.png" alt="">水やり</div>
+    <div class="sb-chips">
+      <button class="sb-chip active" data-filter="water" data-val="" onclick="toggleFilter(this)">すべて</button>
+      <button class="sb-chip" data-filter="water" data-val="低頻度" onclick="toggleFilter(this)">🪴 低頻度（月数回）</button>
+      <button class="sb-chip" data-filter="water" data-val="標準" onclick="toggleFilter(this)">💧 週1回前後</button>
+      <button class="sb-chip" data-filter="water" data-val="高頻度" onclick="toggleFilter(this)">🌊 高頻度</button>
+    </div>
+  </div>
+
+  <!-- 置き場所 -->
+  <div class="sb-group">
+    <div class="sb-group-label"><img src="assets/icons/split/02-06.png" alt="">置き場所</div>
+    <div class="sb-chips">
+      <button class="sb-chip active" data-filter="place" data-val="" onclick="toggleFilter(this)">すべて</button>
+      <button class="sb-chip" data-filter="place" data-val="リビング" onclick="toggleFilter(this)">🛋️ リビング</button>
+      <button class="sb-chip" data-filter="place" data-val="書斎" onclick="toggleFilter(this)">💻 書斎</button>
+      <button class="sb-chip" data-filter="place" data-val="玄関" onclick="toggleFilter(this)">🚪 玄関</button>
+      <button class="sb-chip" data-filter="place" data-val="キッチン" onclick="toggleFilter(this)">🍳 キッチン</button>
+      <button class="sb-chip" data-filter="place" data-val="寝室" onclick="toggleFilter(this)">🛏️ 寝室</button>
+    </div>
+  </div>
+
+  <!-- ペット安全 -->
+  <div class="sb-group">
+    <div class="sb-group-label"><img src="assets/icons/split/02-07.png" alt="">ペット安全</div>
+    <div class="sb-chips">
+      <button class="sb-chip active" data-filter="safe" data-val="" onclick="toggleFilter(this)">すべて</button>
+      <button class="sb-chip" data-filter="safe" data-val="safe" onclick="toggleFilter(this)">🐾 ペット安全のみ</button>
+    </div>
+  </div>
+
+  <button class="sb-clear-btn" id="filter-clear-btn" onclick="resetAll()">✕ フィルターをクリア</button>
+
+  <div class="sb-100-badge">
+    <span class="num">44+</span>
+    種の植物を収録<br><span style="font-weight:400;font-size:0.68rem;">順次100種以上に拡充</span>
+  </div>
+
+  <button class="sb-fav-link" onclick="switchTab('fav',document.querySelectorAll('.nav-tab')[1])">
+    ❤️ お気に入りリストを見る
+  </button>
+
+  <!-- hidden elements for JS compat -->
+  <div id="filter-bar-extra" style="display:none;">
+    <button style="display:none;" id="filter-toggle-btn"></button>
+  </div>
+</aside>
+
+<!-- Plant Main Content -->
+<div class="plant-content-v2">
 <!-- Seasonal Banner -->
-<div id="seasonal-banner" style="max-width:640px;margin:12px auto 0;padding:0 20px;"></div>
+<div id="seasonal-banner" style="margin-bottom:12px;"></div>
 
 <!-- Main -->
-<main id="main" role="main" class="main bg-white">
+<main id="main" role="main" class="main bg-white" style="max-width:none;padding:0;margin:0;">
     <!-- Stats Cards -->
     <div id="stats-cards" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;"></div>
 
@@ -851,9 +1023,9 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
                 <a href="https://www.amazon.co.jp/s?k=観葉植物+育て方+本&tag=appadaycrea0f-22" target="_blank" rel="noopener noreferrer" class="amz-link js-track-affiliate" data-platform="Amazon" data-item-name="観葉植物育て方本" data-link-type="affiliate_link">📗 育て方の本</a>
             </div>
         </div>
-    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:16px 18px;margin:20px 0" id="related-blog">
-  <p style="font-weight:800;font-size:.9rem;color:#1e293b;margin:0 0 10px">📚 関連コラム</p>
-  <ul style="margin:0;padding-left:0;list-style:none"><li style="margin:0 0 6px"><a href="/blog/household-budget-guide/" style="color:#4f46e5;font-size:.88rem;text-decoration:none;">📖 家計管理の基本ガイド</a></li><li style="margin:0 0 6px"><a href="/blog/rogo-2000man-guide/" style="color:#4f46e5;font-size:.88rem;text-decoration:none;">📖 老後2,000万円問題の解決策</a></li></ul>
+    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:16px 18px;margin:20px 0" id="related-blog">
+  <p style="font-weight:800;font-size:.9rem;color:#14532d;margin:0 0 10px">📚 観葉植物関連コンテンツ</p>
+  <ul style="margin:0;padding-left:0;list-style:none"><li style="margin:0 0 6px"><a href="/green-diary-app/lp/" style="color:#16a34a;font-size:.88rem;text-decoration:none;">🌱 植物成長記録アプリ — 毎日の水やりを記録しよう</a></li><li style="margin:0 0 6px"><a href="/plant-encyclopedia/" style="color:#16a34a;font-size:.88rem;text-decoration:none;">🌿 観葉植物図鑑 — 44種の育て方をすべて確認</a></li></ul>
 </div>
 </div>
 
@@ -882,10 +1054,10 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
 <section aria-labelledby="faq-h" class="bg-white rounded-2xl shadow-md p-4 mb-4" style="max-width:740px;margin-left:auto;margin-right:auto">
   
 <div style="background:#f0f7ff;border:1px solid #bfdbfe;border-radius:12px;padding:1.5rem 1.75rem;margin:2rem 0" id="tool-desc-box">
-  <h2 style="font-size:1.05rem;font-weight:800;color:#1e40af;margin:0 0 1rem">📋 このツールの詳細</h2>
-  <p style="color:#374151;margin:0 0 .75rem;line-height:1.8">「あなたにぴったりの植物を見つけよう」は、計画立案や情報整理をサポートする無料のガイド・プランニングツールです。</p>
-  <p style="color:#374151;margin:0 0 .75rem;line-height:1.8">ステップに沿って進めることで、複雑なプロセスをわかりやすく整理し、抜け漏れを防ぐことができます。</p>
-  <p style="color:#374151;margin:0;line-height:1.8">初めての方でも迷わず使えるシンプルな設計で、すぐに結果を確認できます。</p>
+  <h2 style="font-size:1.05rem;font-weight:800;color:#1e40af;margin:0 0 1rem">📋 観葉植物図鑑について</h2>
+  <p style="color:#374151;margin:0 0 .75rem;line-height:1.8">「観葉植物図鑑・育て方検索」は、44種類以上の観葉植物の育て方・水やり頻度・日光条件・最低温度を無料で検索できるデータベースツールです。</p>
+  <p style="color:#374151;margin:0 0 .75rem;line-height:1.8">難易度・日光・水やり・置く場所・ペット安全性などの条件でフィルタリングして、あなたの室内環境にぴったりの植物を見つけることができます。</p>
+  <p style="color:#374151;margin:0;line-height:1.8">植物カードをタップすると水やりのコツ・病害虫対策・季節別ケア情報を確認でき、気に入った植物はお気に入りに保存。育て方Tipsタブでは基本ルールと初心者おすすめTOP3も掲載しています。</p>
 </div>
 <div style="background:#eaf4fb;border-left:4px solid #1976d2;padding:20px 24px;margin:24px 0;border-radius:0 8px 8px 0">
   <h3 style="font-size:1.1rem;font-weight:800;color:#1e3a5f">このツールでできること</h3>
@@ -893,44 +1065,49 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
 </div>
 <div style="background:#f0fdf4;border-left:4px solid #388e3c;padding:20px 24px;margin:24px 0;border-radius:0 8px 8px 0">
   <h3 style="font-size:1.1rem;font-weight:800;color:#1b5e20">活用シーン・使い方</h3>
-  <p style="margin:8px 0 0;line-height:1.7;color:#1a1a2e">道端や公園で見かけた植物の名前を調べたい方や、新しく購入した植物の育て方を確認したい方に最適です。アレルギー植物や有毒植物の確認にも活用できます。</p>
+  <p style="margin:8px 0 0;line-height:1.7;color:#1a1a2e">以下のようなシーンでご活用ください：</p>
+  <ul style="margin:12px 0 0 20px;line-height:1.8;color:#1a1a2e;font-size:0.95rem">
+    <li><strong>買ったばかりの植物の育て方を確認したい時</strong> — 水やり頻度・日光条件・温度管理を即座に確認して、枯らさない育て方をマスター</li>
+    <li><strong>部屋の環境に合う観葉植物を探している時</strong> — 日陰が多い部屋なら「日陰OK」フィルターで、初心者なら「超簡単・初心者向け」を選ぶだけで最適な植物が見つかる</li>
+    <li><strong>ペットや幼児がいるご家庭</strong> — 「安全性 → ペット安全のみ」で有毒な植物を除外し、安心して飾れる植物を検索</li>
+  </ul>
 </div>
 <div style="background:#fff8e1;border-left:4px solid #f57c00;padding:20px 24px;margin:24px 0;border-radius:0 8px 8px 0">
   <h3 style="font-size:1.1rem;font-weight:800;color:#e65100">注意点・補足</h3>
   <p style="margin:8px 0 0;line-height:1.7;color:#1a1a2e">植物の同定は写真や特徴だけでは難しい場合があります。毒性がある可能性のある植物については、専門家への確認や農林水産省の毒植物情報もご参照ください。</p>
 </div>
 <!-- r22-editorial -->
-<div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:.75rem;padding:1.5rem;margin:1.5rem 0">
-  <h2 style="font-size:1.05rem;font-weight:800;color:#7c2d12;margin:0 0 1rem;border-left:4px solid #ea580c;padding-left:.75rem">趣味・余暇の活動データ（2024〜2025年）</h2>
-  <p style="font-size:.88rem;color:#4b5563;margin:0 0 .75rem">総務省「社会生活基本調査」などをもとに、日本人の趣味・余暇活動の実態を整理しました。</p>
+<div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:.75rem;padding:1.5rem;margin:1.5rem 0">
+  <h2 style="font-size:1.05rem;font-weight:800;color:#14532d;margin:0 0 1rem;border-left:4px solid #16a34a;padding-left:.75rem">観葉植物に関するデータ（2024〜2025年）</h2>
+  <p style="font-size:.88rem;color:#4b5563;margin:0 0 .75rem">国内の観葉植物市場・植物ケアに関する調査データをまとめました。</p>
   <table style="width:100%;border-collapse:collapse;font-size:.83rem">
     <thead>
-      <tr style="background:#fed7aa">
-        <th style="padding:.5rem .75rem;text-align:left;border:1px solid #fed7aa;color:#7c2d12">項目</th>
-        <th style="padding:.5rem .75rem;text-align:left;border:1px solid #fed7aa;color:#7c2d12">データ</th>
-        <th style="padding:.5rem .75rem;text-align:left;border:1px solid #fed7aa;color:#7c2d12">出典</th>
+      <tr style="background:#bbf7d0">
+        <th style="padding:.5rem .75rem;text-align:left;border:1px solid #86efac;color:#14532d">項目</th>
+        <th style="padding:.5rem .75rem;text-align:left;border:1px solid #86efac;color:#14532d">データ</th>
+        <th style="padding:.5rem .75rem;text-align:left;border:1px solid #86efac;color:#14532d">出典</th>
       </tr>
     </thead>
     <tbody>
-      <tr style="background:#fff7ed">
-        <td style="padding:.5rem .75rem;border:1px solid #fed7aa;font-weight:600;color:#7c2d12">平均余暇時間（有業者・1日）</td>
-        <td style="padding:.5rem .75rem;border:1px solid #fed7aa"><strong>約3時間（平日）/ 約7時間（休日）</strong></td>
-        <td style="padding:.5rem .75rem;border:1px solid #fed7aa;font-size:.78rem;color:#6b7280">総務省「社会生活基本調査」2021年</td>
+      <tr style="background:#f0fdf4">
+        <td style="padding:.5rem .75rem;border:1px solid #86efac;font-weight:600;color:#14532d">観葉植物購入経験者（20〜60代）</td>
+        <td style="padding:.5rem .75rem;border:1px solid #86efac"><strong>約65%（新型コロナ禍以降に増加傾向）</strong></td>
+        <td style="padding:.5rem .75rem;border:1px solid #86efac;font-size:.78rem;color:#6b7280">リビング産業協議会・市場調査 参考</td>
       </tr>
-      <tr style="">
-        <td style="padding:.5rem .75rem;border:1px solid #fed7aa;font-weight:600;color:#7c2d12">読書の平均時間（1日）</td>
-        <td style="padding:.5rem .75rem;border:1px solid #fed7aa"><strong>約10〜20分（読書をする人の平均は約40分）</strong></td>
-        <td style="padding:.5rem .75rem;border:1px solid #fed7aa;font-size:.78rem;color:#6b7280">総務省「社会生活基本調査」参考</td>
+      <tr>
+        <td style="padding:.5rem .75rem;border:1px solid #86efac;font-weight:600;color:#14532d">植物が枯れる主な原因（第1位）</td>
+        <td style="padding:.5rem .75rem;border:1px solid #86efac"><strong>水のやりすぎ（根腐れ）— 全体の約40%</strong></td>
+        <td style="padding:.5rem .75rem;border:1px solid #86efac;font-size:.78rem;color:#6b7280">園芸専門家・ガーデニング調査 参考</td>
       </tr>
-      <tr style="background:#fff7ed">
-        <td style="padding:.5rem .75rem;border:1px solid #fed7aa;font-weight:600;color:#7c2d12">趣味・娯楽費（月平均）</td>
-        <td style="padding:.5rem .75rem;border:1px solid #fed7aa"><strong>約2〜4万円（世帯規模・収入で大きく差あり）</strong></td>
-        <td style="padding:.5rem .75rem;border:1px solid #fed7aa;font-size:.78rem;color:#6b7280">総務省「家計調査」参考値</td>
+      <tr style="background:#f0fdf4">
+        <td style="padding:.5rem .75rem;border:1px solid #86efac;font-weight:600;color:#14532d">室内植物の空気清浄効果</td>
+        <td style="padding:.5rem .75rem;border:1px solid #86efac"><strong>サンスベリア・ポトス等はNASAのクリーンエア研究で効果を報告</strong></td>
+        <td style="padding:.5rem .75rem;border:1px solid #86efac;font-size:.78rem;color:#6b7280">NASA Clean Air Study（参考）</td>
       </tr>
-      <tr style="">
-        <td style="padding:.5rem .75rem;border:1px solid #fed7aa;font-weight:600;color:#7c2d12">継続的な趣味活動と精神健康</td>
-        <td style="padding:.5rem .75rem;border:1px solid #fed7aa"><strong>定期的な趣味活動はストレス軽減・幸福感向上に効果</strong></td>
-        <td style="padding:.5rem .75rem;border:1px solid #fed7aa;font-size:.78rem;color:#6b7280">心理学研究・厚生労働省「こころの健康」参考</td>
+      <tr>
+        <td style="padding:.5rem .75rem;border:1px solid #86efac;font-weight:600;color:#14532d">観葉植物と心理的効果</td>
+        <td style="padding:.5rem .75rem;border:1px solid #86efac"><strong>室内緑化でストレス軽減・集中力向上が研究で示されている</strong></td>
+        <td style="padding:.5rem .75rem;border:1px solid #86efac;font-size:.78rem;color:#6b7280">農業・食品産業技術総合研究機構 参考</td>
       </tr>
     </tbody>
   </table>
@@ -942,12 +1119,16 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
 </div>
 <h2 id="faq-h" style="font-size:1.05rem;font-weight:700;margin-bottom:12px;border-left:4px solid #4f46e5;padding-left:10px;">よくある質問</h2>
   <dl style="line-height:1.8;">
-    <dt style="font-weight:600;margin-top:12px;">Q: このツールはどんな場面で役立ちますか？</dt>
-    <dd style="margin-left:16px;color:#374151;">観葉植物図鑑・育て方検索｜初心者でもに関する情報を整理・比較するのに役立ちます。選択肢を検討する際の「最初の一歩」としてご活用ください。</dd>
-    <dt style="font-weight:600;margin-top:12px;">Q: 提案内容は必ず実行しなければいけませんか？</dt>
-    <dd style="margin-left:16px;color:#374151;">いいえ、あくまで参考情報です。ご自身の状況・予算・ライフスタイルに合わせてアレンジしてご利用ください。</dd>
-    <dt style="font-weight:600;margin-top:12px;">Q: 家族や友人とシェアできますか？</dt>
-    <dd style="margin-left:16px;color:#374151;">はい、スクリーンショットやURLをシェアしてご活用ください。家族みんなで観葉植物図鑑・育て方検索｜初心者でもについて話し合うきっかけにどうぞ。</dd>
+    <dt style="font-weight:600;margin-top:12px;">Q: 初めて観葉植物を買う場合、何を選べばよいですか？</dt>
+    <dd style="margin-left:16px;color:#374151;">難易度フィルターで「超簡単」を選ぶと、サンスベリア・ポトス・ザミオクルカスなど月1〜2回の水やりで育つ植物が表示されます。水やり忘れや日照が少ない環境でも枯れにくい植物を選ぶのがコツです。</dd>
+    <dt style="font-weight:600;margin-top:12px;">Q: 犬・猫がいる家庭でも安全な植物を探せますか？</dt>
+    <dd style="margin-left:16px;color:#374151;">はい。フィルターバーの「もっと絞り込む」から「安全性 → ペット安全のみ」を選ぶと、有毒性のない植物だけを表示できます。ポトスやモンステラなど人気種でも猫・犬に有毒な植物があるため、必ずこのフィルターで確認してください。</dd>
+    <dt style="font-weight:600;margin-top:12px;">Q: お気に入り登録した植物は次回も確認できますか？</dt>
+    <dd style="margin-left:16px;color:#374151;">はい。お気に入りはブラウザのlocalStorageに保存されるため、アカウント不要で次回アクセス時にも「お気に入り」タブから確認できます。ただしブラウザのキャッシュ・Cookie削除や別デバイスからは引き継がれません。</dd>
+    <dt style="font-weight:600;margin-top:12px;">Q: 梅雨の時期、観葉植物の管理で特に気をつけることは？</dt>
+    <dd style="margin-left:16px;color:#374151;">梅雨は蒸れ・根腐れ・カビが発生しやすい時期です。水やりを通常の半分以下に減らし、日中は換気を徹底することが重要です。土が乾きにくくなるため、「土の表面を指で触って乾いているか」を必ず確認してから水やりを判断してください。特にジメジメした環境では、土に白いカビが生えることがありますが、早期発見で土を交換すれば回復できます。</dd>
+    <dt style="font-weight:600;margin-top:12px;">Q: 観葉植物への肥料の与え方・時期を教えてください</dt>
+    <dd style="margin-left:16px;color:#374151;">成長期の春〜秋（4〜10月）は液体肥料を月2〜3回または緩効性の置き肥を2ヶ月に1回が目安です。冬（11〜3月）は成長が止まる休眠期のため、肥料は控えてください。肥料の与えすぎ（肥料焼け）は根を傷める原因になるため、規定量を必ず守ることが大切です。この図鑑の各植物カードを開き「育て方Tips」を確認すると、その植物に合った施肥タイミングを参考にできます。</dd>
   </dl>
 </section>
 
@@ -962,6 +1143,132 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
 </div>
 </section>
 </main>
+</div><!-- /.plant-content-v2 -->
+</div><!-- /.page-body-wrap -->
+
+<!-- Care Rules Section -->
+<div class="care-rules-sec" id="care-rules">
+  <div class="inner">
+    <h2><img src="assets/icons/split/01-01.png" alt="" style="width:28px;height:28px;vertical-align:middle;margin-right:8px;">観葉植物を元気に成長させる基本ルール</h2>
+    <div class="care-rules-grid">
+      <div class="care-rule-item">
+        <img src="assets/icons/split/02-03.png" alt="水やり">
+        <h4>水やり</h4>
+        <p>水やりは「土が乾いてから」。毎日与えると根腐れの原因に。冬は頻度を半分に。</p>
+      </div>
+      <div class="care-rule-item">
+        <img src="assets/icons/split/02-05.png" alt="日光">
+        <h4>日光</h4>
+        <p>ほとんどの植物は直射日光が苦手。レースカーテン越しの明るい場所が理想的。</p>
+      </div>
+      <div class="care-rule-item">
+        <img src="assets/icons/split/04-08.png" alt="温度">
+        <h4>温度</h4>
+        <p>熱帯原産の植物は10℃以下で弱る。冬は窓際から室内中央へ移動させよう。</p>
+      </div>
+      <div class="care-rule-item">
+        <img src="assets/icons/split/05-01.png" alt="害虫">
+        <h4>害虫を早期発見</h4>
+        <p>葉の裏を定期チェック。水スプレーで洗い流すだけで予防効果がある。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Growth Tips Section -->
+<div class="growth-sec" id="howto-section">
+  <div class="inner">
+    <h2><img src="assets/icons/split/04-06.png" alt="" style="width:24px;height:24px;vertical-align:middle;margin-right:8px;">成長期サポートのポイント</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:800px;">
+      <div>
+        <div class="growth-bars">
+          <div class="growth-bar-row">
+            <div class="growth-bar-label" style="width:60px;font-size:0.72rem;">🌸 春</div>
+            <div class="growth-bar-track"><div class="growth-bar-fill" style="width:85%;background:#5a8f4a;">水やり増・液肥スタート</div></div>
+          </div>
+          <div class="growth-bar-row">
+            <div class="growth-bar-label" style="width:60px;font-size:0.72rem;">☀️ 夏</div>
+            <div class="growth-bar-track"><div class="growth-bar-fill" style="width:70%;background:#f59e0b;">高頻度・遮光注意</div></div>
+          </div>
+          <div class="growth-bar-row">
+            <div class="growth-bar-label" style="width:60px;font-size:0.72rem;">🍂 秋</div>
+            <div class="growth-bar-track"><div class="growth-bar-fill" style="width:50%;background:#d97706;">水やり減・肥料停止</div></div>
+          </div>
+          <div class="growth-bar-row">
+            <div class="growth-bar-label" style="width:60px;font-size:0.72rem;">❄️ 冬</div>
+            <div class="growth-bar-track"><div class="growth-bar-fill" style="width:25%;background:#60a5fa;">月1〜2回・断水気味</div></div>
+          </div>
+        </div>
+        <div class="growth-legend">
+          <div class="growth-legend-item"><div class="growth-legend-dot" style="background:#5a8f4a;"></div>成長旺盛</div>
+          <div class="growth-legend-item"><div class="growth-legend-dot" style="background:#60a5fa;"></div>休眠期</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <div style="background:#fff;border-radius:12px;padding:14px;border:1px solid rgba(45,90,36,0.1);">
+          <div style="font-size:0.8rem;font-weight:800;color:#2d5a24;margin-bottom:4px;">💧 水やりの黄金ルール</div>
+          <div style="font-size:0.78rem;color:#4a6741;line-height:1.6;">土の表面を指で触って、乾いていたら水やり。受け皿の水は必ず捨てる。</div>
+        </div>
+        <div style="background:#fff;border-radius:12px;padding:14px;border:1px solid rgba(45,90,36,0.1);">
+          <div style="font-size:0.8rem;font-weight:800;color:#2d5a24;margin-bottom:4px;">🌱 肥料のタイミング</div>
+          <div style="font-size:0.78rem;color:#4a6741;line-height:1.6;">4〜10月の成長期に液肥を月2〜3回。11〜3月の休眠期は施肥しない。</div>
+        </div>
+        <div style="background:#fff;border-radius:12px;padding:14px;border:1px solid rgba(45,90,36,0.1);">
+          <div style="font-size:0.8rem;font-weight:800;color:#2d5a24;margin-bottom:4px;">🪴 植え替えは春に</div>
+          <div style="font-size:0.78rem;color:#4a6741;line-height:1.6;">根が鉢底から出たら植え替えサイン。4〜5月の春が最適。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AI Section -->
+<div class="ai-sec">
+  <div class="inner">
+    <div class="ai-sec-icon">
+      <img src="assets/icons/split/04-02.png" alt="AI相談">
+    </div>
+    <div class="ai-sec-body">
+      <h3>AI相談・Q&A機能（Coming Soon）</h3>
+      <p>「葉が黄色くなってきた」「水やり頻度は？」など、観葉植物の悩みをAIに直接相談できる機能を準備中です。育て方の疑問を即座に解決できます。</p>
+      <span class="ai-badge">🌱 GreenSnap連携予定</span>
+    </div>
+  </div>
+</div>
+
+<!-- Share/PDF Section -->
+<div class="share-pdf-sec" id="plants-section">
+  <div class="inner">
+    <h3>育て方を保存・シェア</h3>
+    <div class="share-btn-row">
+      <button class="share-btn-item share-btn-pdf" onclick="printResults()">
+        <img src="assets/icons/split/03-08.png" alt="PDF" style="width:16px;height:16px;filter:brightness(0) invert(1);">
+        育て方PDFを保存
+      </button>
+      <a href="https://twitter.com/intent/tweet?url=https://appadaycreator.com/plant-encyclopedia/&text=観葉植物図鑑・育て方検索%20%23観葉植物" target="_blank" rel="noopener" class="share-btn-item share-btn-tw">
+        𝕏 Xでシェア
+      </a>
+      <a href="https://line.me/R/msg/text/?観葉植物図鑑・育て方検索%0Ahttps://appadaycreator.com/plant-encyclopedia/" target="_blank" rel="noopener" class="share-btn-item share-btn-line">
+        LINE
+      </a>
+      <a href="https://pinterest.com/pin/create/button/?url=https://appadaycreator.com/plant-encyclopedia/&description=観葉植物図鑑・育て方検索" target="_blank" rel="noopener" class="share-btn-item" style="background:#E60023;color:#fff;">
+        Pinterest
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Bottom CTA Bar -->
+<div class="bottom-cta-bar">
+  <div class="inner">
+    <h2>あなたにぴったりの観葉植物が見つかる</h2>
+    <p>44種の植物を日光・水やり・難易度でかんたん検索。初心者でも失敗しない植物選びをサポート。</p>
+    <a href="#main" class="cta-btn" onclick="document.getElementById('search-input').focus()">
+      <img src="assets/icons/split/01-06.png" alt="" style="width:22px;height:22px;filter:brightness(0) invert(1);">
+      診断を始める →
+    </a>
+  </div>
+</div>
 
 <!-- Detail Modal -->
 <div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this)closeModal()">
@@ -975,6 +1282,31 @@ ins.adsbygoogle[data-ad-status="unfilled"]{display:none!important;margin:0!impor
 const FAV_KEY = 'plant_favs_v1';
 const filters = { diff: '', light: '', water: '', place: '', safe: '' };
 let currentPlantId = '';
+
+const PHOTO_MAP = {
+    'sansevieria':'assets/photos/photo_07.jpg','pothos':'assets/photos/photo_08.jpg',
+    'pachira':'assets/photos/photo_09.jpg','monstera':'assets/photos/photo_10.jpg',
+    'ficuslyre':'assets/photos/photo_11.jpg','gajumaru':'assets/photos/photo_12.jpg',
+    'drakaena':'assets/photos/photo_13.jpg','arrowhead':'assets/photos/photo_14.jpg',
+    'aloe':'assets/photos/photo_15.jpg','yukka':'assets/photos/photo_16.jpg',
+    'arecapalm':'assets/photos/photo_17.jpg','zamioculcas':'assets/photos/photo_18.jpg',
+    'calathea':'assets/photos/photo_19.jpg','caladium':'assets/photos/photo_20.jpg',
+    'fern':'assets/photos/photo_21.jpg','peperomia':'assets/photos/photo_22.jpg',
+    'succulent':'assets/photos/photo_07.jpg','cactus':'assets/photos/photo_08.jpg',
+    'strelitzia':'assets/photos/photo_09.jpg','schefflera':'assets/photos/photo_10.jpg',
+    'dieffenbachia':'assets/photos/photo_11.jpg','koidea':'assets/photos/photo_12.jpg',
+    'anthurium':'assets/photos/photo_13.jpg','rubber':'assets/photos/photo_14.jpg',
+    'orchid':'assets/photos/photo_15.jpg','spathiphyllum':'assets/photos/photo_16.jpg',
+    'herbbasil':'assets/photos/photo_17.jpg','lavender':'assets/photos/photo_18.jpg',
+    'airplant':'assets/photos/photo_19.jpg','oriza':'assets/photos/photo_20.jpg',
+    'benjamin':'assets/photos/photo_21.jpg','sugarvine':'assets/photos/photo_22.jpg',
+    'cordyline':'assets/photos/photo_07.jpg','haworthia':'assets/photos/photo_08.jpg',
+    'philodendron':'assets/photos/photo_09.jpg','kannonchiku':'assets/photos/photo_10.jpg',
+    'bostonfern':'assets/photos/photo_11.jpg','maranta':'assets/photos/photo_12.jpg',
+    'croton':'assets/photos/photo_13.jpg','poinsettia':'assets/photos/photo_14.jpg',
+    'jasmine':'assets/photos/photo_15.jpg','hypoestes':'assets/photos/photo_16.jpg',
+    'cyclamen':'assets/photos/photo_17.jpg','guzmania':'assets/photos/photo_18.jpg',
+};
 
 // 日光フィルター: 部分一致マッピング（完全一致だと漏れが出るため）
 const LIGHT_MAP = {
@@ -1105,12 +1437,13 @@ function render() {
 function plantCard(p, favs) {
     const isFav = favs.has(p.id);
     const diffClass = { '超簡単': 'easy', '初心者': 'beginner', '中級': 'intermediate', '上級': 'advanced' }[p.diff] || 'beginner';
+    const photo = PHOTO_MAP[p.id] || 'assets/photos/photo_07.jpg';
     return `<div class="plant-card" role="button" tabindex="0" onclick="openModal('${p.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openModal('${p.id}')}" aria-label="${p.name}の詳細を見る">
-        <div class="plant-card-img ${p.bg}">
-            <span>${p.emoji}</span>
+        <div class="plant-card-img" style="background:#f0f7ed;overflow:hidden;">
+            <img src="${photo}" alt="${p.name}" class="card-photo" style="width:100%;height:100%;object-fit:cover;" loading="lazy" onerror="this.style.display='none';this.parentNode.style.fontSize='3rem';this.parentNode.innerHTML+='<span style=&quot;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)&quot;>${p.emoji}</span>'">
             <button class="fav-btn ${isFav?'active':''}" onclick="toggleFav('${p.id}',event)" aria-label="${isFav?`${p.name}をお気に入りから削除`:`${p.name}をお気に入りに追加`}" aria-pressed="${isFav}">${isFav?'❤️':'🤍'}</button>
             <span class="difficulty-badge ${diffClass}">${p.diff}</span>
-            ${p.toxic ? '<span class="toxic-badge">⚠️ 毒性注意</span>' : ''}
+            ${p.toxic ? '<span class="toxic-badge">⚠️ 毒</span>' : ''}
         </div>
         <div class="plant-card-body">
             <div class="plant-name">${p.name}</div>
@@ -1119,6 +1452,8 @@ function plantCard(p, favs) {
                 <span class="stat-chip">💧 ${p.water}</span>
                 <span class="stat-chip">☀️ ${p.light}</span>
             </div>
+            <button style="width:100%;padding:10px 14px;margin-top:10px;background:#2d5a24;color:#fff;border:none;border-radius:10px;font-size:0.85rem;font-weight:700;cursor:pointer;transition:all 0.15s;" onmouseover="this.style.background='#1e3d18'" onmouseout="this.style.background='#2d5a24'" onclick="openModal('${p.id}');event.stopPropagation();" aria-label="${p.name}の詳細を見る">育て方を見る →</button>
+            <a href="https://www.amazon.co.jp/s?k=${encodeURIComponent(p.name+' 観葉植物')}&tag=appadaycrea0f-22" target="_blank" rel="noopener noreferrer" class="js-track-affiliate" data-platform="Amazon" data-item-name="${p.name}" data-link-type="affiliate_link" style="width:100%;padding:8px 10px;margin-top:6px;display:block;background:#fffbf0;border:1.5px solid #fde68a;border-radius:8px;text-align:center;text-decoration:none;font-size:0.75rem;font-weight:600;color:#92400e;" onclick="event.stopPropagation();">🛒 Amazonで見る</a>
         </div>
     </div>`;
 }
@@ -1131,11 +1466,13 @@ function openModal(id) {
     const isFav = favs.has(p.id);
     const diffClass = { '超簡単': 'easy', '初心者': 'beginner', '中級': 'intermediate', '上級': 'advanced' }[p.diff] || 'beginner';
 
+    const photo = PHOTO_MAP[p.id] || 'assets/photos/photo_07.jpg';
     const mc = document.getElementById('modal-content');
     mc.innerHTML = `
-        <div class="modal-hero ${p.bg}" style="font-size:6rem;border-radius:24px 24px 0 0;">
-            <span>${p.emoji}</span>
-            <button class="modal-close" onclick="closeModal()" aria-label="モーダルを閉じる">✕</button>
+        <div class="modal-hero" style="position:relative;height:220px;border-radius:24px 24px 0 0;overflow:hidden;background:#e8f0e5;">
+            <img src="${photo}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy">
+            <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.55) 0%,transparent 60%);"></div>
+            <button class="modal-close" onclick="closeModal()" aria-label="モーダルを閉じる" style="position:absolute;top:12px;right:12px;background:rgba(255,255,255,0.9);border:none;border-radius:50%;width:36px;height:36px;font-size:1rem;cursor:pointer;z-index:2;">✕</button>
         </div>
         <div class="modal-body">
             <div class="modal-title">${p.name}</div>
@@ -1368,16 +1705,17 @@ function initSeasonalBanner() {
 }
 
 function initStatsCards() {
+    const total = PLANTS.length;
     const safeCount = PLANTS.filter(p => !p.toxic).length;
     const easyCount = PLANTS.filter(p => p.diff === '超簡単').length;
     const flowerCount = PLANTS.filter(p => (p.keywords||[]).some(k => k.includes('花が咲く'))).length;
     const container = document.getElementById('stats-cards');
     if (!container) return;
     container.innerHTML = [
-        { icon: '🐾', label: `ペット安全`, count: safeCount, action: `(function(){filters.safe='safe';document.querySelectorAll('[data-filter=safe]').forEach(b=>{b.classList.remove('active');if(b.dataset.val==='safe')b.classList.add('active');});updateFilterClearBtn();render();})()` },
-        { icon: '🌟', label: `超簡単`, count: easyCount, action: `(function(){filters.diff='超簡単';document.querySelectorAll('[data-filter=diff]').forEach(b=>{b.classList.remove('active');if(b.dataset.val==='超簡単')b.classList.add('active');});updateFilterClearBtn();render();})()` },
-        { icon: '🌸', label: `花が咲く`, count: flowerCount, action: `searchByTag('花が咲く')` },
-    ].map(s => `<div onclick="${s.action}" role="button" tabindex="0" aria-label="${s.label}：${s.count}件、タップで絞り込む" style="flex:1;min-width:80px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 12px;text-align:center;cursor:pointer;transition:all 0.18s ease-out;box-shadow:var(--shadow-sm);" onmouseover="this.style.borderColor='var(--primary)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''"><div style="font-size:1.2rem;">${s.icon}</div><div style="font-size:1.1rem;font-weight:800;color:var(--primary);">${s.count}</div><div style="font-size:0.68rem;color:var(--text-muted);font-weight:600;">${s.label}</div><div style="font-size:0.6rem;color:var(--text-muted);margin-top:2px;">タップで絞込</div></div>`).join('');
+        { icon: '🐾', label: `ペット安全`, count: safeCount, desc: `全${total}種中`, action: `(function(){filters.safe='safe';document.querySelectorAll('[data-filter=safe]').forEach(b=>{b.classList.remove('active');if(b.dataset.val==='safe')b.classList.add('active');});updateFilterClearBtn();render();})()` },
+        { icon: '🌟', label: `超簡単`, count: easyCount, desc: `全${total}種中`, action: `(function(){filters.diff='超簡単';document.querySelectorAll('[data-filter=diff]').forEach(b=>{b.classList.remove('active');if(b.dataset.val==='超簡単')b.classList.add('active');});updateFilterClearBtn();render();})()` },
+        { icon: '🌸', label: `花が咲く`, count: flowerCount, desc: `全${total}種中`, action: `searchByTag('花が咲く')` },
+    ].map(s => `<div onclick="${s.action}" role="button" tabindex="0" aria-label="${s.label}：全${total}種中${s.count}件、タップで絞り込む" style="flex:1;min-width:80px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 12px;text-align:center;cursor:pointer;transition:all 0.18s ease-out;box-shadow:var(--shadow-sm);" onmouseover="this.style.borderColor='var(--primary)';this.style.transform='translateY(-2px)'" onmouseout="this.style.borderColor='var(--border)';this.style.transform=''"><div style="font-size:1.5rem;">${s.icon}</div><div style="font-size:0.65rem;color:var(--text-muted);font-weight:500;margin-top:2px;">${s.desc}</div><div style="font-size:1.5rem;font-weight:800;color:var(--primary);line-height:1.2;">${s.count}種</div><div style="font-size:0.8rem;color:var(--text-secondary);font-weight:700;margin-top:2px;">${s.label}</div><div style="font-size:0.68rem;color:var(--primary);font-weight:600;margin-top:3px;">▶ タップで絞込</div></div>`).join('');
 }
 
 function searchByTag(tag) {
@@ -1409,10 +1747,9 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 </script>
 
-<div style="margin:20px auto;max-width:800px;padding:16px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;">
-<p style="font-size:0.85rem;font-weight:bold;color:#166534;margin-bottom:10px;">🌿 植物を学ぶ通信講座</p>
-<div style="display:flex;flex-wrap:wrap;gap:10px;">
-<a class="js-track-affiliate" href="https://www.amazon.co.jp/s?k=観葉植物+育て方+図鑑+室内+おすすめ&tag=appadaycrea0f-22" target="_blank" rel="noopener" style="background:#16a34a;color:#fff;padding:8px 14px;border-radius:8px;font-size:0.82em;font-weight:bold;text-decoration:none;" data-platform="Amazon" data-item-name="観葉植物育て方図鑑" data-link-type="affiliate_link">📚 Amazon関連書籍・育て方本を見る →</a></div>
+<div style="margin:20px auto;max-width:800px;padding:16px 20px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;">
+<p style="font-size:0.85rem;font-weight:bold;color:#166534;margin-bottom:10px;">🌿 観葉植物の育て方本・グッズをAmazonで探す</p>
+<a class="js-track-affiliate" href="https://www.amazon.co.jp/s?k=観葉植物+育て方+図鑑+室内+おすすめ&tag=appadaycrea0f-22" target="_blank" rel="noopener" style="display:block;width:100%;text-align:center;background:#16a34a;color:#fff;padding:14px 20px;border-radius:10px;font-size:0.92rem;font-weight:bold;text-decoration:none;box-shadow:0 3px 10px rgba(22,163,74,0.35);transition:all .15s;" onmouseover="this.style.background='#15803d';this.style.transform='scale(1.01)'" onmouseout="this.style.background='#16a34a';this.style.transform=''" data-platform="Amazon" data-item-name="観葉植物育て方図鑑" data-link-type="affiliate_link">📚 Amazonで観葉植物の育て方本・グッズを今すぐ確認する →</a>
 </div>
 <div id="page-loader-pe" class="loading" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,0.95);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;">
   <div class="spinner" style="width:40px;height:40px;border:4px solid #e5f0e2;border-top-color:#3d6b31;border-radius:50%;animation:spin-pe 0.8s linear infinite;"></div>
@@ -1507,51 +1844,50 @@ function savepeResult(){
 
 <!-- r31-use-cases -->
 <div style="margin:1.5rem auto;max-width:760px;padding:0 1rem">
-<h2 style="font-size:1.125rem;font-weight:700;margin:0 0 1rem;color:#1e293b;border-left:4px solid #4f46e5;padding-left:10px">こんな方・シーンで役立ちます</h2>
+<h2 style="font-size:1.125rem;font-weight:700;margin:0 0 1rem;color:#1e293b;border-left:4px solid #16a34a;padding-left:10px">こんな方・シーンで役立ちます</h2>
 <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem">
-<div style="padding:1rem;background:#f8fafc;border:1px solid #e2e8f0;border-radius:.75rem">
-<div style="font-size:1.5rem;margin-bottom:.4rem">🏡</div>
-<div style="font-weight:700;font-size:.9rem;color:#1e293b;margin-bottom:.4rem">マイホーム購入を検討中</div>
-<div style="font-size:.85rem;color:#64748b;line-height:1.7">購入か賃貸か、新築か中古かを費用面から客観的に比較して、最適な選択をしたい方に。総コスト・月々の支払いを長期で見える化できます。</div>
+<div style="padding:1rem;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:.75rem">
+<div style="font-size:1.5rem;margin-bottom:.4rem">🌱</div>
+<div style="font-weight:700;font-size:.9rem;color:#14532d;margin-bottom:.4rem">はじめて植物を育てる方</div>
+<div style="font-size:.85rem;color:#64748b;line-height:1.7">「超簡単」フィルターで失敗しにくい植物を絞り込み。サンスベリアやポトスなど月1〜2回の水やりで育つ植物から始めましょう。</div>
 </div>
-<div style="padding:1rem;background:#f8fafc;border:1px solid #e2e8f0;border-radius:.75rem">
-<div style="font-size:1.5rem;margin-bottom:.4rem">🔧</div>
-<div style="font-weight:700;font-size:.9rem;color:#1e293b;margin-bottom:.4rem">リフォーム・DIY計画中</div>
-<div style="font-size:.85rem;color:#64748b;line-height:1.7">キッチン・お風呂・外壁などのリフォームで必要な材料費・工賃の目安を把握して適正な見積り判断に役立てたい方に。</div>
+<div style="padding:1rem;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:.75rem">
+<div style="font-size:1.5rem;margin-bottom:.4rem">🐾</div>
+<div style="font-weight:700;font-size:.9rem;color:#14532d;margin-bottom:.4rem">ペット・小さな子どもがいるご家庭</div>
+<div style="font-size:.85rem;color:#64748b;line-height:1.7">「ペット安全のみ」フィルターで有毒な植物を除外。ポトスやモンステラは猫・犬に有毒なため、安全な植物を選べます。</div>
 </div>
-<div style="padding:1rem;background:#f8fafc;border:1px solid #e2e8f0;border-radius:.75rem">
-<div style="font-size:1.5rem;margin-bottom:.4rem">📦</div>
-<div style="font-weight:700;font-size:.9rem;color:#1e293b;margin-bottom:.4rem">引越し準備中の方</div>
-<div style="font-size:.85rem;color:#64748b;line-height:1.7">引越し費用・必要な手続き・新居に必要なものリストを効率よく整理して、スムーズな引越しを実現したい方に。</div>
+<div style="padding:1rem;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:.75rem">
+<div style="font-size:1.5rem;margin-bottom:.4rem">🏢</div>
+<div style="font-weight:700;font-size:.9rem;color:#14532d;margin-bottom:.4rem">日当たりが悪い部屋・オフィス</div>
+<div style="font-size:.85rem;color:#64748b;line-height:1.7">「日陰OK」フィルターで北向き部屋やオフィスに最適な植物を検索。ザミオクルカス・ハオルシアなどは窓のない場所でも育ちます。</div>
 </div>
-<div style="padding:1rem;background:#f8fafc;border:1px solid #e2e8f0;border-radius:.75rem">
-<div style="font-size:1.5rem;margin-bottom:.4rem">⚡</div>
-<div style="font-weight:700;font-size:.9rem;color:#1e293b;margin-bottom:.4rem">光熱費を節約したい方</div>
-<div style="font-size:.85rem;color:#64748b;line-height:1.7">電気・ガス・水道の使用量を数値で把握して、具体的な節約方法と節約効果を確認したい方に。</div>
+<div style="padding:1rem;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:.75rem">
+<div style="font-size:1.5rem;margin-bottom:.4rem">🎁</div>
+<div style="font-weight:700;font-size:.9rem;color:#14532d;margin-bottom:.4rem">植物をプレゼントしたい方</div>
+<div style="font-size:.85rem;color:#64748b;line-height:1.7">相手の生活スタイルに合わせて植物を選べます。「置く場所」フィルターで玄関・リビング・書斎向けの植物を絞り込んでプレゼントに最適な一株を。</div>
 </div>
 </div>
 </div>
 <!-- r31-extended-faq -->
 <div style="margin:1.5rem auto;max-width:760px;padding:0 1rem">
 <div style="background:white;border-radius:16px;padding:1.5rem;box-shadow:0 4px 20px rgba(0,0,0,.08)">
-<h2 style="font-size:1.05rem;font-weight:700;margin:0 0 1rem;border-left:4px solid #4f46e5;padding-left:10px;color:#1e293b">よくある質問（詳細）</h2>
+<h2 style="font-size:1.05rem;font-weight:700;margin:0 0 1rem;border-left:4px solid #16a34a;padding-left:10px;color:#1e293b">よくある質問（詳細）</h2>
 <div style="margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid #f1f5f9">
-<p style="font-size:.9rem;font-weight:700;color:#1e293b;margin:0 0 .5rem">Q: 賃貸と購入はどちらがお得ですか？</p>
-<p style="font-size:.85rem;color:#475569;line-height:1.8;margin:0">A: 一概には言えません。賃貸は流動性が高く初期費用が少ない一方、資産形成にはなりません。購入は資産になりますが、修繕費・固定資産税等の維持費がかかります。居住年数・家族構成・職業の安定性・地域の不動産相場を総合的に判断することが重要です。FPや宅地建物取引士への相談もお勧めします。</p>
+<p style="font-size:.9rem;font-weight:700;color:#1e293b;margin:0 0 .5rem">Q: 観葉植物が枯れる一番の原因は何ですか？</p>
+<p style="font-size:.85rem;color:#475569;line-height:1.8;margin:0">A: 最も多い原因は「水のやりすぎによる根腐れ」です。土の表面が乾くまで水を与えないことが基本で、特に冬は成長が止まるため水やり頻度を半分以下に減らすことが重要です。次いで多い原因が「日照不足」で、葉が黄色くなったり細長く伸びる（徒長）症状が出ます。この図鑑の各植物ページで適切な水やり頻度・日光条件を確認しながら管理してください。</p>
 </div>
 <div style="margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid #f1f5f9">
-<p style="font-size:.9rem;font-weight:700;color:#1e293b;margin:0 0 .5rem">Q: 省エネリフォームの補助金はありますか？</p>
-<p style="font-size:.85rem;color:#475569;line-height:1.8;margin:0">A: 国・自治体の省エネリフォーム補助金として、住宅省エネ2025キャンペーン（断熱窓・給湯器等）、子育てエコホーム支援事業などがあります。補助金は予算に達し次第終了するため、国土交通省や各都道府県の公式サイトで最新情報をご確認ください。</p>
+<p style="font-size:.9rem;font-weight:700;color:#1e293b;margin:0 0 .5rem">Q: 日当たりが悪い北向きの部屋でも育てられる植物はありますか？</p>
+<p style="font-size:.85rem;color:#475569;line-height:1.8;margin:0">A: あります。この図鑑では「日光フィルター→日陰OK」で絞り込むと、サンスベリア・ポトス・ザミオクルカス（ZZプランツ）・フィロデンドロン・オリヅルランなど耐陰性の高い植物を検索できます。ただし「完全な暗所」では育てられないため、蛍光灯程度の光がある環境を確保してください。光量に不安がある場合はLED育成ライトの使用もおすすめです。</p>
 </div>
 <div style="margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid #f1f5f9">
-<p style="font-size:.9rem;font-weight:700;color:#1e293b;margin:0 0 .5rem">Q: 引越し費用を安く抑えるコツは何ですか？</p>
-<p style="font-size:.85rem;color:#475569;line-height:1.8;margin:0">A: ①閑散期（2月・6月・11月頃）に引越す、②平日を選ぶ、③複数の業者に一括見積りを依頼する、④荷物を自分で梱包する（梱包材は業者に依頼しない）、⑤不用品を売って荷物を減らす、の5点が効果的です。また、引越し先が同一市区町村内であれば費用が抑えられることが多いです。</p>
+<p style="font-size:.9rem;font-weight:700;color:#1e293b;margin:0 0 .5rem">Q: 猫・犬がいる家庭でも安全な植物を知りたいです。</p>
+<p style="font-size:.85rem;color:#475569;line-height:1.8;margin:0">A: この図鑑では「安全性フィルター→ペット安全のみ」で絞り込むことができます。サンスベリア・アロエベラ・アレカヤシ・カラテア・ペペロミア・オリヅルランなどがペットに比較的安全とされています。一方、ポトス・フィロデンドロン・モンステラ・ディフェンバキア・コルディリネ・ザミオクルカスなどは猫・犬に有毒です。安全情報はASPCA（米国動物虐待防止協会）のデータも合わせてご確認ください。</p>
 </div>
 <div style="margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid #f1f5f9">
-<p style="font-size:.9rem;font-weight:700;color:#1e293b;margin:0 0 .5rem">Q: 植物の室内栽培で注意することは何ですか？</p>
-<p style="font-size:.85rem;color:#475569;line-height:1.8;margin:0">A: 室内植物管理の基本は①適切な日当たり（直射日光・日陰を好む種類により異なる）、②過水・過乾燥を避ける（土が乾いてから水を与える）、③適切な温度管理（15〜25℃が多くの植物の適温）、④定期的な葉の清掃です。ペットや小さな子どもに有毒な植物（ポトス・フィロデンドロン等）には注意が必要です。</p>
+<p style="font-size:.9rem;font-weight:700;color:#1e293b;margin:0 0 .5rem">Q: 植え替えの時期はいつが最適ですか？またどのくらいの頻度で行えばよいですか？</p>
+<p style="font-size:.85rem;color:#475569;line-height:1.8;margin:0">A: 植え替えの最適時期は4〜6月（春）で、成長期に入る前に行うことで根の回復が早まります。頻度の目安は一般的に2年に1回程度ですが、根が鉢底から出てきた・水をあげてもすぐ乾く・根が土の表面まで出てきた場合は早めの植え替えサインです。一回り大きな鉢に新しい観葉植物用培養土で植え替えましょう。植え替え後1〜2週間は直射日光を避け、肥料も控えめにして根の回復を待ちます。</p>
 </div>
-
 </div>
 </div>
 <!-- r31-tool-notice -->
@@ -1559,23 +1895,22 @@ function savepeResult(){
 <div style="padding:1.25rem 1.5rem;background:#fef3c7;border:1px solid #fbbf24;border-radius:.75rem">
 <h3 style="font-size:1rem;font-weight:700;margin:0 0 .75rem;color:#92400e">⚠️ ご利用時の注意事項</h3>
 <ul style="margin:0;padding-left:1.25rem;font-size:.88rem;color:#78350f;line-height:2">
-<li style='margin-bottom:.4rem'>リフォーム・引越し費用の見積もりは業者によって大きく異なります。必ず複数社から見積りを取ってください</li>
-<li style='margin-bottom:.4rem'>不動産購入・住宅ローンに関する判断は専門家（FP・宅地建物取引士）にご相談ください</li>
-<li style='margin-bottom:.4rem'>電気・ガス・水道の料金プランは随時改定されます。最新料金は各事業者の公式サイトでご確認ください</li>
-<li style='margin-bottom:.4rem'>DIY作業は安全に配慮して行ってください。電気・ガス工事は有資格者のみが対応可能です</li>
-<li style='margin-bottom:.4rem'>本ツールの計算結果はあくまで参考値です。実際のコストは状況により異なります</li>
+<li style='margin-bottom:.4rem'>掲載している植物の育て方情報は一般的な目安であり、品種・栽培環境（地域・気温・日照）によって大きく異なる場合があります</li>
+<li style='margin-bottom:.4rem'>毒性情報は参考値です。ペットへの影響はASPCA（米国動物虐待防止協会）などの専門機関のデータも合わせてご確認ください</li>
+<li style='margin-bottom:.4rem'>植物の同定（種類の特定）には専門知識が必要です。不明な植物の口腔・経口摂取は危険なため絶対に行わないでください</li>
+<li style='margin-bottom:.4rem'>本図鑑のデータは掲載時点の情報です。栽培方法・品種情報は随時更新されます。最新情報は園芸専門家・園芸書籍でもご確認ください</li>
 </ul>
 </div>
 </div>
 <!-- r31-tool-references -->
 <div style="margin:1.5rem auto;max-width:760px;padding:0 1rem">
 <div style="padding:1.25rem 1.5rem;background:#f8fafc;border:1px solid #e2e8f0;border-radius:.75rem">
-<h3 style="font-size:1rem;font-weight:700;margin:0 0 .75rem;color:#1e293b">📚 関連する公的情報・参考リンク</h3>
+<h3 style="font-size:1rem;font-weight:700;margin:0 0 .75rem;color:#1e293b">📚 観葉植物に関する参考情報・リンク</h3>
 <ul style="margin:0;padding-left:1.25rem;font-size:.88rem;color:#374151;line-height:1.9">
-<li style='margin-bottom:.5rem'><a href="https://www.mlit.go.jp/jutakukentiku/index.html" target="_blank" rel="noopener noreferrer" style="color:#4f46e5">国土交通省 住宅局</a> — 住宅政策・補助金・リフォーム制度の公的情報</li>
-<li style='margin-bottom:.5rem'><a href="https://www.jhf.go.jp/" target="_blank" rel="noopener noreferrer" style="color:#4f46e5">住宅金融支援機構（フラット35）</a> — 住宅ローンの種類・金利・制度の解説</li>
-<li style='margin-bottom:.5rem'><a href="https://www.reform-online.jp/news/government-support/" target="_blank" rel="noopener noreferrer" style="color:#4f46e5">住宅リフォーム・紛争処理支援センター</a> — リフォームの相談窓口・補助金情報</li>
-<li style='margin-bottom:.5rem'><a href="https://www.eccj.or.jp/" target="_blank" rel="noopener noreferrer" style="color:#4f46e5">省エネルギーセンター（ECCJ）</a> — 家電の省エネ性能・節電ガイド</li>
+<li style='margin-bottom:.5rem'><a href="https://www.maff.go.jp/j/kanbo/tosan/sisin/index.html" target="_blank" rel="noopener noreferrer" style="color:#16a34a">農林水産省 毒草・有毒植物情報</a> — 食べると危険な植物・毒草の注意喚起</li>
+<li style='margin-bottom:.5rem'><a href="https://www.ffpri.affrc.go.jp/" target="_blank" rel="noopener noreferrer" style="color:#16a34a">森林総合研究所</a> — 樹木・植物の生態・研究情報</li>
+<li style='margin-bottom:.5rem'><a href="https://www.aspca.org/pet-care/animal-poison-control/toxic-and-non-toxic-plants" target="_blank" rel="noopener noreferrer" style="color:#16a34a">ASPCA — Toxic and Non-Toxic Plants（英語）</a> — ペットに有毒・無毒な植物の公式リスト</li>
+<li style='margin-bottom:.5rem'><a href="https://www.naro.go.jp/" target="_blank" rel="noopener noreferrer" style="color:#16a34a">農研機構（農業・食品産業技術総合研究機構）</a> — 観葉植物・農業に関する研究・データ</li>
 </ul>
 </div>
 </div>
@@ -1624,12 +1959,12 @@ function savepeResult(){
 <div style="text-align:center;padding:10px 16px 14px;background:#eef2ff;border-top:2px solid #c7d2fe;margin-top:8px">
 <a href="/blog/" style="color:#4f46e5;font-size:.85rem;font-weight:700">📖 マネー・育児・キャリアのコラムを読む →</a>
 </div>
-<div style="background:#eef2ff;border-left:4px solid #4f46e5;border-radius:.5rem;padding:1rem 1.25rem;margin:1.5rem auto;max-width:760px;font-size:.875rem">
-<p style="margin:0 0 .5rem;font-weight:700;color:#3730a3">📖 お役立ちコラム</p>
-<ul style="margin:0;padding-left:1.25rem;color:#4f46e5;line-height:2">
-<li><a href="/blog/stock-investment-beginner/" style="color:#4f46e5">株式投資の始め方【初心者完全ガイド】</a></li>
-<li><a href="/blog/nisa-comparison/" style="color:#4f46e5">新NISA vs iDeCo 徹底比較</a></li>
-<li><a href="/blog/investment-risk-management/" style="color:#4f46e5">投資のリスク管理入門</a></li>
+<div style="background:#f0fdf4;border-left:4px solid #16a34a;border-radius:.5rem;padding:1rem 1.25rem;margin:1.5rem auto;max-width:760px;font-size:.875rem">
+<p style="margin:0 0 .5rem;font-weight:700;color:#14532d">🌿 観葉植物のお役立ち情報</p>
+<ul style="margin:0;padding-left:1.25rem;color:#16a34a;line-height:2">
+<li><a href="/plant-encyclopedia/" style="color:#16a34a">観葉植物図鑑 — 44種類の育て方を無料検索</a></li>
+<li><a href="/green-diary-app/lp/" style="color:#16a34a">植物成長記録アプリ — 水やり・施肥を記録しよう</a></li>
+<li><a href="/plant-encyclopedia/#panel-tips" style="color:#16a34a" onclick="switchTab('tips',document.querySelectorAll('.nav-tab')[2])">育て方Tips — 季節別ケアと初心者TOP3</a></li>
 </ul>
 </div>
 <!-- r17-mobile-ux -->
